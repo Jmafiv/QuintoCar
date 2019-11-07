@@ -1,4 +1,5 @@
 "use strict";
+
 /////////////////// Eventos de la página ///////////////////
 // Asignar a los elementos un evento (Evitando poner onclick en el html)
 var opcion; // Guarda qué se está mostrando y según lo que muestra envia una cosa u otra
@@ -89,6 +90,27 @@ function compraVehiculo(){
 function ventaVehiculo(){
 }
 
+/////////////////// Listados ///////////////////
+var pestañaListados = null; // Pestaña donde se mostrará los listados
+var pestañaAbierta = false; // Los listados se cargarán en la misma pestaña
+eventoEn("clickLVehiculoVenta","click",clickLVehiculoVenta);
+eventoEn("clickLVendidos","click",clickLVendidos);
+eventoEn("clickLComprados","click",clickLComprados);
+eventoEn("clickLVehiculos","click",clickLVehiculos);
+eventoEn("clickLClientes","click",clickLClientes);
+
+function clickLVehiculoVenta(){ abreListadoPestaña("Listado vehículos en venta","Vehículos en venta"); }
+function clickLVendidos(){ abreListadoPestaña("Listado vehículos vendidos","Vehículos vendidos"); }
+function clickLComprados(){	abreListadoPestaña("Listado vehículos comprados","Vehículos comprados"); }
+function clickLVehiculos(){	abreListadoPestaña("Listado vehículos","Vehículos"); }
+function clickLClientes(){ abreListadoPestaña("Listado clientes","Clientes"); }
+function abreListadoPestaña(listado,titulo){
+	if(!pestañaAbierta){
+		pestañaListados = window.open("",titulo,"");
+		pestañaAbierta = true;
+	}
+	pestañaListados.document.body.innerHTML = listado;
+}
 
 /////////////////// Validaciones ///////////////////
 
