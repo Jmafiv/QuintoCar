@@ -63,6 +63,7 @@ eventoEn("enviar","click",enviar);
 function enviar(){ // Según lo que se muestra en pantalla se envia a un método o a otro
 	switch (opcion) {
 		case "altaCliente":
+			// mensajeErrorDebajo(formulario.nif,"Tiene que ser un NIF correcto.");   //Ejemplo de mensaje debajo del elemento de validación
 			altaCliente();
 			break;
 		case "altaVehiculo":
@@ -86,4 +87,12 @@ function altaVehiculo(){
 function compraVehiculo(){
 }
 function ventaVehiculo(){
+}
+
+
+/////////////////// Validaciones ///////////////////
+
+function mensajeErrorDebajo(elemento,mensaje){
+	elemento.parentElement.getElementsByClassName("invalid-feedback")[0].innerHTML = mensaje;
+	// formulario.classList.add("was-validated"); // ejemplo
 }
