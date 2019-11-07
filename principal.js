@@ -19,6 +19,7 @@ function mostrarAltaCliente () {
 function mostrarAltaVehiculo () {
 	opcion = "altaVehiculo";
 	ocultaCosas(["F-altaCliente","T-altaVehiculo","F-comprarVehiculo","F-venderVehiculo"]);
+	mostrarSegunTipo();
 }
 function mostrarCompraVehiculo () {
 	opcion = "compraVehiculo";
@@ -54,4 +55,35 @@ function deshabilitaInputs(elemento,NoSi){
 	for(let i=0; i < document.getElementById(elemento).getElementsByTagName('input').length;i++){
 		document.getElementById(elemento).getElementsByTagName('input')[i].disabled = NoSi;
 	}
+}
+
+/////////////////// Botón Enviar ///////////////////
+eventoEn("enviar","click",enviar);
+
+function enviar(){ // Según lo que se muestra en pantalla se envia a un método o a otro
+	switch (opcion) {
+		case "altaCliente":
+			altaCliente();
+			break;
+		case "altaVehiculo":
+			altaVehiculo();
+			break;
+		case "compraVehiculo":
+			compraVehiculo();
+			break;
+		case "ventaVehiculo":
+			ventaVehiculo();
+			break;
+		default:
+			return false;
+	}
+}
+
+function altaCliente(){
+}
+function altaVehiculo(){
+}
+function compraVehiculo(){
+}
+function ventaVehiculo(){
 }
