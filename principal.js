@@ -1,7 +1,7 @@
 "use strict";
-var opcion; // Guarda qué se está mostrando y según lo que muestra envia una cosa u otra
-
+/////////////////// Eventos de la página ///////////////////
 // Asignar a los elementos un evento (Evitando poner onclick en el html)
+var opcion; // Guarda qué se está mostrando y según lo que muestra envia una cosa u otra
 function eventoEn(elemento,tipo,funcion){
 	let boton=document.getElementById(elemento);
 	boton.addEventListener(tipo, funcion, false);
@@ -14,7 +14,7 @@ eventoEn("tipo","change",mostrarSegunTipo);
 
 function mostrarAltaCliente () {
 	opcion = "altaCliente";
-	ocultaCosas(["T-altaCliente","F-altaVehiculo","F-comprarVehiculo","F-venderVehiculo"]);
+	ocultaCosas(["T-altaCliente","F-altaVehiculo","F-comprarVehiculo","F-venderVehiculo"]); // Se define con T/F (True/False) + el id del elemento a mostrar/ocultar
 }
 function mostrarAltaVehiculo () {
 	opcion = "altaVehiculo";
@@ -28,22 +28,12 @@ function mostrarVentaVehiculo () {
 	opcion = "ventaVehiculo";
 	ocultaCosas(["F-altaCliente","F-altaVehiculo","F-comprarVehiculo","T-venderVehiculo"]);
 }
-function mostrarSegunTipo(){
-	if(document.getElementById("tipo").value=="Turismo"){
-		document.getElementById("pendiente").classList.add("oculta");
-		document.getElementById("abs").classList.remove("oculta");
-		document.getElementById("descapotable").classList.remove("oculta");
-		document.getElementById("numPuertas").classList.remove("oculta");
-	}
-	else{
-		document.getElementById("pendiente").classList.remove("oculta");
-		document.getElementById("abs").classList.add("oculta");
-		document.getElementById("descapotable").classList.add("oculta");
-		document.getElementById("numPuertas").classList.add("oculta");
-	}
+function mostrarSegunTipo(){ // Oculta los detalles según el tipo del vehículo señalado
+	if(document.getElementById("tipo").value=="Turismo"){ ocultaCosas(["F-pendiente","T-abs","T-descapotable","T-numPuertas"]);	}
+	else{ ocultaCosas(["T-pendiente","F-abs","F-descapotable","F-numPuertas"]); }
 }
 
-// Mostrar/Ocultar elementos
+/////////////////// Mostrar/Ocultar los formularios ///////////////////
 function ocultaCosas(array){
 	formulario.classList.remove("oculta");
 	for (var i = 0; i < array.length; i++) {
@@ -59,7 +49,6 @@ function ocultaCosas(array){
 		}
 	}
 }
-
 // Los campos requeridos se deshabilitan dejando solo los que se muestran activos
 function deshabilitaInputs(elemento,NoSi){ 
 	for(let i=0; i < document.getElementById(elemento).getElementsByTagName('input').length;i++){
