@@ -10,6 +10,7 @@ eventoEn("clickAltaCliente","click",mostrarAltaCliente);
 eventoEn("clickAltaVehiculo","click",mostrarAltaVehiculo);
 eventoEn("clickCompraVehiculo","click",mostrarCompraVehiculo);
 eventoEn("clickVentaVehiculo","click",mostrarVentaVehiculo);
+eventoEn("tipo","change",mostrarSegunTipo);
 
 function mostrarAltaCliente () {
 	opcion = "altaCliente";
@@ -26,6 +27,20 @@ function mostrarCompraVehiculo () {
 function mostrarVentaVehiculo () {
 	opcion = "ventaVehiculo";
 	ocultaCosas(["F-altaCliente","F-altaVehiculo","F-comprarVehiculo","T-venderVehiculo"]);
+}
+function mostrarSegunTipo(){
+	if(document.getElementById("tipo").value=="Turismo"){
+		document.getElementById("pendiente").classList.add("oculta");
+		document.getElementById("abs").classList.remove("oculta");
+		document.getElementById("descapotable").classList.remove("oculta");
+		document.getElementById("numPuertas").classList.remove("oculta");
+	}
+	else{
+		document.getElementById("pendiente").classList.remove("oculta");
+		document.getElementById("abs").classList.add("oculta");
+		document.getElementById("descapotable").classList.add("oculta");
+		document.getElementById("numPuertas").classList.add("oculta");
+	}
 }
 
 // Mostrar/Ocultar elementos
