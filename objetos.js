@@ -124,7 +124,7 @@ class V4x4 extends Vehiculo {
 class QuintoCar {
     constructor() {
         this.clientes = [];
-        this.Vvntas = [];
+        this.Ventas = [];
         this.compras = [];
         this.vehiculos = [];
     }
@@ -141,8 +141,7 @@ class QuintoCar {
         if (this.clientes.filter(vehiculotemp => vehiculoTemp.matricula == vehiculo.matricula).length == 0) {
                 this.clientes.push(vehiculo);
                 return "Vehiculo dado de alta";
-        }
-            return "El vehiculo ya existe";
+        return "El vehiculo ya existe";
     }
 
     buscarCliente(nif) {
