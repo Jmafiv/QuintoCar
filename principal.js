@@ -119,18 +119,28 @@ function ventaVehiculo(){
 
 /////////////////// Listados ///////////////////
 var pestañaListados = null; // Pestaña donde se mostrará los listados
+let btnModal;
 
 eventoEn("clickLVehiculoVenta","click",clickLVehiculoVenta);
 eventoEn("clickLVendidos","click",clickLVendidos);
 eventoEn("clickLComprados","click",clickLComprados);
 eventoEn("clickLVehiculos","click",clickLVehiculos);
 eventoEn("clickLClientes","click",clickLClientes);	
+eventoEn("verListado","click",botonModal);	
 
 function clickLVehiculoVenta(){ abreListadoPestaña("Listado vehículos en venta","Vehículos en venta"); }
-//function clickLVendidos(){ abreListadoPestaña("Listado vehículos vendidos","Vehículos vendidos"); }
-//function clickLComprados(){	abreListadoPestaña("Listado vehículos comprados","Vehículos comprados"); }
+function clickLVendidos(){ btnModal = "vendidos"; }
+function clickLComprados(){ btnModal = "comprados"; }
 function clickLVehiculos(){	abreListadoPestaña("Listado vehículos","Vehículos"); }
 function clickLClientes(){ abreListadoPestaña(quintocar.listadoClientes(),"Clientes"); }
+function botonModal(){
+	if(btnModal == "vendidos"){
+		abreListadoPestaña(quintocar.listadoVendidosperiodo(formFechas.fechaInicio,formFechas.fechaFinal),"Vehículos vendidos");
+	}
+	else if (btnModal == "comprados"){
+		abreListadoPestaña(quintocar.listadoCompradosperiodo(formFechas.fechaInicio,formFechas.fechaFinal),"Vehículos Comprados");
+	}
+}
 
 function abreListadoPestaña(listado,titulo){
 	if(!pestañaListados || pestañaListados.closed){

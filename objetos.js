@@ -194,11 +194,11 @@ class QuintoCar {
     }
 
     listadoVendidosperiodo(fechaInicio, fechaFin) {
-        return table;
+        return "listadoVendidosperiodo";
     }
 
     listadoComprasperiodo(fechaInicio, fechaFin) {
-        return table;
+        return "listadoComprasperiodo";
     }
 
     listadoVehiculos() {
