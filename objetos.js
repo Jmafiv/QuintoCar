@@ -130,23 +130,23 @@ class QuintoCar {
     }
 
     altaCliente(cliente) {
-        if (clientes.filter(clienteTemp => clienteTemp.nif == cliente.nif).length == 0) {
-            clientes.push(cliente);
+        if (this.clientes.filter(clienteTemp => clienteTemp.nif == cliente.nif).length == 0) {
+            this.clientes.push(cliente);
             return "Cliente dado de alta";
         }
         return "El cliente ya existe";
     }
 
     altaVehiculo(vehiculo) {
-        if (clientes.filter(vehiculotemp => vehiculoTemp.matricula == vehiculo.matricula).length == 0) {
-                clientes.push(vehiculo);
+        if (this.clientes.filter(vehiculotemp => vehiculoTemp.matricula == vehiculo.matricula).length == 0) {
+                this.clientes.push(vehiculo);
                 return "Vehiculo dado de alta";
         }
             return "El vehiculo ya existe";
     }
 
     buscarCliente(nif) {
-        Clientes.foreach(compara);
+        this.clientes.foreach(compara);
 
         function compara(cliente, index) {
             if (cliente.nif == nif) {
@@ -156,7 +156,7 @@ class QuintoCar {
     }
 
     buscarCompra(vehiculo) {
-        Compras.foreach(compara);
+        this.compras.foreach(compara);
 
         function compara(compra, index) {
             if (compra.vehiculo == vehiculo) {
@@ -166,7 +166,7 @@ class QuintoCar {
     }
 
     buscarVenta(Vehiculo) {
-        Ventas.foreach(compara);
+        this.ventas.foreach(compara);
 
         function compara(venta, index) {
             if (venta.vehiculo == vehiculo) {
