@@ -1,5 +1,9 @@
 "use strict";
 var quintocar = new QuintoCar();
+
+// Mensaje de si se ha añadido o no las cosas
+function mensaje(texto){ document.getElementById("mensaje").innerHTML = texto;}
+
 /////////////////// Eventos de la página ///////////////////
 // Asignar a los elementos un evento (Evitando poner onclick en el html)
 var opcion; // Guarda qué se está mostrando y según lo que muestra envia una cosa u otra
@@ -15,38 +19,41 @@ eventoEn("tipo","change",mostrarSegunTipo);
 
 function mostrarAltaCliente () {
 	opcion = "altaCliente";
-	ocultaCosas(["T-altaCliente","F-altaVehiculo","F-comprarVehiculo","F-venderVehiculo"]); // Se define con T/F (True/False) + el id del elemento a mostrar/ocultar
+	ocultaCosas(["T-altaCliente","F-altaVehiculo","F-comprarVehiculo","F-venderVehiculo"],true); // Se define con T/F (True/False) + el id del elemento a mostrar/ocultar
 }
 function mostrarAltaVehiculo () {
 	opcion = "altaVehiculo";
+	ocultaCosas(["F-altaCliente","T-altaVehiculo","F-comprarVehiculo","F-venderVehiculo"],true);
 	mostrarSegunTipo();
-	ocultaCosas(["F-altaCliente","T-altaVehiculo","F-comprarVehiculo","F-venderVehiculo"]);
 }
 function mostrarCompraVehiculo () {
 	opcion = "compraVehiculo";
-	ocultaCosas(["F-altaCliente","F-altaVehiculo","T-comprarVehiculo","F-venderVehiculo"]);
+	ocultaCosas(["F-altaCliente","F-altaVehiculo","T-comprarVehiculo","F-venderVehiculo"],true);
 }
 function mostrarVentaVehiculo () {
 	opcion = "ventaVehiculo";
-	ocultaCosas(["F-altaCliente","F-altaVehiculo","F-comprarVehiculo","T-venderVehiculo"]);
+	ocultaCosas(["F-altaCliente","F-altaVehiculo","F-comprarVehiculo","T-venderVehiculo"],true);
 }
 function mostrarSegunTipo(){ // Oculta los detalles según el tipo del vehículo señalado
-	if(formulario.tipo.value=="Turismo"){ ocultaCosas(["F-pendiente","T-abs","T-descapotable","T-numPuertas"]);	}
-	else{ ocultaCosas(["T-pendiente","F-abs","F-descapotable","F-numPuertas"]); }
+	if(formulario.tipo.value=="Turismo"){ ocultaCosas(["F-pendiente","T-abs","T-descapotable","T-numPuertas"],false);	}
+	else{ ocultaCosas(["T-pendiente","F-abs","F-descapotable","F-numPuertas"],false); }
 }
 
 /////////////////// Mostrar/Ocultar los formularios ///////////////////
-function ocultaCosas(array){
+function ocultaCosas(array,menu){
+	mensaje("");
+	document.getElementById("mensaje").classList.add("oculta");
+
 	formulario.classList.remove("oculta");
 	for (var i = 0; i < array.length; i++) {
 		if(array[i].substring(0,1)=="F"){ //Si no se tiene que mostrar:
 			document.getElementById(array[i].substring(2)).classList.add("oculta"); // Oculta los divs que no se deben mostrar
-			document.getElementById("menu").getElementsByTagName('li')[i].classList.remove("active"); // le quita en el menú el color blanco
+			menu ? document.getElementById("menu").getElementsByTagName('li')[i].classList.remove("active"):false; // le quita en el menú el color blanco
 			deshabilitaInputs(array[i].substring(2),true); // todos los inputs dentro del elemento los deshabilita
 		}
 		else if(array[i].substring(0,1)=="T"){ //Si se tiene que mostrar:
 			document.getElementById(array[i].substring(2)).classList.remove("oculta"); // Muestra los divs que no se deben mostrar
-			document.getElementById("menu").getElementsByTagName('li')[i].classList.add("active"); // le añade en el menú el color blanco
+			menu ? document.getElementById("menu").getElementsByTagName('li')[i].classList.add("active"):false; // le añade en el menú el color blanco
 			deshabilitaInputs(array[i].substring(2),false); // todos los inputs dentro del elemento los habilita
 		}
 	}
@@ -75,9 +82,8 @@ function enviar(){ // Según lo que se muestra en pantalla se envia a un método
 		case "ventaVehiculo":
 			ventaVehiculo();
 			break;
-		default:
-			return false;
 	}
+	document.getElementById("mensaje").classList.remove("oculta");
 }
 
 function altaCliente(){
@@ -86,24 +92,25 @@ function altaCliente(){
 	let apellidos = formulario.apellidos.value;
 	let telefono = formulario.telefono.value;
 	let cliente = new Cliente(nif,nombre,apellidos,telefono);
-	quintocar.altaCliente(cliente);
+	mensaje(quintocar.altaCliente(cliente));
 }
 function altaVehiculo(){
 	let matricula = formulario.matricula.value;
 	let marca = formulario.marca.value;
 	let modelo = formulario.modelo.value;
 	let combustible = formulario.combustible.value;
+	let vehiculo;
 	if(formulario.tipo.value=="Turismo"){
-		let abs = formulario.abs.value;
-		let descapotable = formulario.descapotable.value;
+		let abs = formulario.abs.checked;
+		let descapotable = formulario.descapotable.checked;
 		let numPuertas = formulario.numPuertas.value;
-		let vehiculo = new Turismo(matricula,marca,modelo,combustible,abs,descapotable,numPuertas);
+		vehiculo = new Turismo(matricula,marca,modelo,combustible,abs,descapotable,numPuertas);
 	}
 	else{
 		let pendiente = formulario.pendiente.value;
-		let vehiculo = new V4x4(matricula,marca,modelo,combustible,pendiente);
+		vehiculo = new V4x4(matricula,marca,modelo,combustible,pendiente);
 	}
-	quintocar.altaVehiculo(vehiculo);
+	mensaje(quintocar.altaVehiculo(vehiculo));
 }
 function compraVehiculo(){
 }

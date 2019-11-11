@@ -138,8 +138,8 @@ class QuintoCar {
     }
 
     altaVehiculo(vehiculo) {
-        if (this.clientes.filter(vehiculotemp => vehiculoTemp.matricula == vehiculo.matricula).length == 0) {
-                this.clientes.push(vehiculo);
+        if (this.vehiculos.filter(vehiculoTemp => vehiculoTemp.matricula == vehiculo.matricula).length == 0) {
+                this.vehiculos.push(vehiculo);
                 return "Vehiculo dado de alta";
         }
         return "El vehiculo ya existe";
