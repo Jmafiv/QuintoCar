@@ -206,6 +206,13 @@ class QuintoCar {
     }
 
     listadoClientes() {
+        this.clientes.sort(function(cliente,otroCliente)
+        {
+            if (cliente.apellidos > otroCliente.apellidos) {return 1;}
+            if (cliente.apellidos < otroCliente.apellidos) {return -1;}
+            return 0;
+        });
+
         let tabla = "<table class='table'><thead class='thead-dark'><tr><th scope='col'>NIF</th><th scope='col'>Nombre</th><th scope='col'>Apellidos</th><th scope='col'>Teléfono</th></tr></thead><tbody>";
         this.clientes.forEach( function(cliente) {
             tabla+=cliente.toHtmlRow();
