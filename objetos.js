@@ -14,6 +14,7 @@ class Cliente {
         row += "<td>" + this.apellidos + "</td>";
         row += "<td>" + this.telefono + "</td>";
         row += "</tr>";
+        return row;
     }
 }
 
@@ -38,6 +39,7 @@ class Venta {
         row += "<td>" + this.importe + "</td>";
         row += "<td>" + this.fechaVenta + "</td>";
         row += "</tr>";
+        return row;
     }
 }
 
@@ -62,6 +64,7 @@ class Compra {
         row += "<td>" + this.importe + "</td>";
         row += "<td>" + this.fechaCompra + "</td>";
         row += "</tr>";
+        return row;
     }
 }
 
@@ -80,6 +83,7 @@ class Vehiculo {
         row += "<td>" + this.modelo + "</td>";
         row += "<td>" + this.combustible + "</td>";
         row += "</tr>";
+        return row;
     }
 }
 
@@ -101,6 +105,7 @@ class Turismo extends Vehiculo {
         row += "<td>" + this.descapotable + "</td>";
         row += "<td>" + this.numPuertas + "</td>";
         row += "</tr>";
+        return row;
     }
 }
 
@@ -118,6 +123,7 @@ class V4x4 extends Vehiculo {
         row += "<td>" + this.combustible + "</td>";
         row += "<td>" + this.pendienteMax + "</td>";
         row += "</tr>";
+        return row;
     }
 }
 
