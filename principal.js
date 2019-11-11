@@ -152,3 +152,20 @@ function mensajeErrorDebajo(elemento,mensaje){
 	elemento.parentElement.getElementsByClassName("invalid-feedback")[0].innerHTML = mensaje;
 	// formulario.classList.add("was-validated"); // ejemplo
 }
+
+///////////////// Datos Iniciales /////////////////
+
+function datosIniciales() {
+
+    var cliente = new Cliente("12345678A", "Lucas", "Martínez", 954121512);
+    quintocar.altaCliente(cliente);
+    cliente = new Cliente("23456789B", "Sandra", "Rodríguez", 692477512);
+    quintocar.altaCliente(cliente);
+    cliente = new Cliente("12121212C", "Asier", "Palomo", 652032147);
+    quintocar.altaCliente(cliente);
+    cliente = new Cliente("12323434W", "Marta", "Carrasco", 741542658);
+    quintocar.altaCliente(cliente);
+    cliente = new Cliente("56743281R", "Adrián", "López", 954618295);
+    quintocar.altaCliente(cliente);    
+
+}
