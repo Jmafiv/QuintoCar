@@ -8,10 +8,10 @@ class Cliente {
     }
     toHtmlRow() {
         let row = "<tr>";
-        row += "<td>" + this.Cliente.nif + "</td>";
-        row += "<td>" + this.Cliente.nombre + "</td>";
-        row += "<td>" + this.Cliente.apellidos + "</td>";
-        row += "<td>" + this.Cliente.telefono + "</td>";
+        row += "<td>" + this.nif + "</td>";
+        row += "<td>" + this.nombre + "</td>";
+        row += "<td>" + this.apellidos + "</td>";
+        row += "<td>" + this.telefono + "</td>";
         row += "</tr>";
     }
 }
@@ -24,16 +24,16 @@ class Venta {
     }
     toHtmlRow() {
         let row = "<tr>";
-        row += "<td>" + this.Cliente.nif + "</td>";
-        row += "<td>" + this.Cliente.nombre + "</td>";
-        row += "<td>" + this.Cliente.apellidos + "</td>";
-        row += "<td>" + this.Cliente.telefono + "</td>";
-        row += "<td>" + this.Vehiculo.matricula + "</td>";
-        row += "<td>" + this.Vehiculo.marca + "</td>";
-        row += "<td>" + this.Vehiculo.modelo + "</td>";
-        row += "<td>" + this.Vehiculo.combustible + "</td>";
-        row += "<td>" + this.Venta.importe + "</td>";
-        row += "<td>" + this.Venta.fechaVenta + "</td>";
+        row += "<td>" + this.nif + "</td>";
+        row += "<td>" + this.nombre + "</td>";
+        row += "<td>" + this.apellidos + "</td>";
+        row += "<td>" + this.telefono + "</td>";
+        row += "<td>" + this.matricula + "</td>";
+        row += "<td>" + this.marca + "</td>";
+        row += "<td>" + this.modelo + "</td>";
+        row += "<td>" + this.combustible + "</td>";
+        row += "<td>" + this.importe + "</td>";
+        row += "<td>" + this.fechaVenta + "</td>";
         row += "</tr>";
     }
 }
@@ -46,16 +46,16 @@ class Compra {
     }
     toHtmlRow() {
         let row = "<tr>";
-        row += "<td>" + this.Cliente.nif + "</td>";
-        row += "<td>" + this.Cliente.nombre + "</td>";
-        row += "<td>" + this.Cliente.apellidos + "</td>";
-        row += "<td>" + this.Cliente.telefono + "</td>";
-        row += "<td>" + this.Vehiculo.matricula + "</td>";
-        row += "<td>" + this.Vehiculo.marca + "</td>";
-        row += "<td>" + this.Vehiculo.modelo + "</td>";
-        row += "<td>" + this.Vehiculo.combustible + "</td>";
-        row += "<td>" + this.Compra.importe + "</td>";
-        row += "<td>" + this.Compra.fechaCompra + "</td>";
+        row += "<td>" + this.nif + "</td>";
+        row += "<td>" + this.nombre + "</td>";
+        row += "<td>" + this.apellidos + "</td>";
+        row += "<td>" + this.telefono + "</td>";
+        row += "<td>" + this.matricula + "</td>";
+        row += "<td>" + this.marca + "</td>";
+        row += "<td>" + this.modelo + "</td>";
+        row += "<td>" + this.combustible + "</td>";
+        row += "<td>" + this.importe + "</td>";
+        row += "<td>" + this.fechaCompra + "</td>";
         row += "</tr>";
     }
 }
@@ -68,10 +68,10 @@ class Vehiculo {
     }
     toHtmlRow() {
         let row = "<tr>";
-        row += "<td>" + this.Vehiculo.matricula + "</td>";
-        row += "<td>" + this.Vehiculo.marca + "</td>";
-        row += "<td>" + this.Vehiculo.modelo + "</td>";
-        row += "<td>" + this.Vehiculo.combustible + "</td>";
+        row += "<td>" + this.matricula + "</td>";
+        row += "<td>" + this.marca + "</td>";
+        row += "<td>" + this.modelo + "</td>";
+        row += "<td>" + this.combustible + "</td>";
         row += "</tr>";
     }
 }
@@ -84,34 +84,34 @@ class Turismo extends Vehiculo {
     }
     toHtmlRow() {
         let row = "<tr>";
-        row += "<td>" + this.Vehiculo.matricula + "</td>";
-        row += "<td>" + this.Vehiculo.marca + "</td>";
-        row += "<td>" + this.Vehiculo.modelo + "</td>";
-        row += "<td>" + this.Vehiculo.combustible + "</td>";
-        row += "<td>" + this.Turismo.abs + "</td>";
-        row += "<td>" + this.Turismo.descapotable + "</td>";
-        row += "<td>" + this.Turismo.numPuertas + "</td>";
+        row += "<td>" + this.matricula + "</td>";
+        row += "<td>" + this.marca + "</td>";
+        row += "<td>" + this.modelo + "</td>";
+        row += "<td>" + this.combustible + "</td>";
+        row += "<td>" + this.abs + "</td>";
+        row += "<td>" + this.descapotable + "</td>";
+        row += "<td>" + this.numPuertas + "</td>";
         row += "</tr>";
     }
 }
-class V4x4 {
+class V4x4 extends Vehiculo{
     constructor(matricula, marca, modelo, combustible, pendienteMax) {
         super(matricula, marca, modelo, combustible);
         this.pendienteMax = pendienteMax;
     }
     toHtmlRow() {
         let row = "<tr>";
-        row += "<td>" + this.Vehiculo.matricula + "</td>";
-        row += "<td>" + this.Vehiculo.marca + "</td>";
-        row += "<td>" + this.Vehiculo.modelo + "</td>";
-        row += "<td>" + this.Vehiculo.combustible + "</td>";
-        row += "<td>" + this.V4x4.pendienteMax + "</td>";
+        row += "<td>" + this.matricula + "</td>";
+        row += "<td>" + this.marca + "</td>";
+        row += "<td>" + this.modelo + "</td>";
+        row += "<td>" + this.combustible + "</td>";
+        row += "<td>" + this.pendienteMax + "</td>";
         row += "</tr>";
     }
 }
 
 class QuintoCar {
-    constructor(Clientes, Ventas, Compras, Vehiculos) {
+    constructor() {
         this.Clientes = [];
         this.Ventas = [];
         this.Compras = [];
