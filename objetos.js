@@ -6,6 +6,7 @@ class Cliente {
         this.apellidos = apellidos;
         this.telefono = telefono;
     }
+
     toHtmlRow() {
         let row = "<tr>";
         row += "<td>" + this.Cliente.nif + "</td>";
@@ -15,6 +16,7 @@ class Cliente {
         row += "</tr>";
     }
 }
+
 class Venta {
     constructor(Cliente, Vehiculo, importe, fechaVenta) { //importe es float
         this.Cliente = Cliente;
@@ -22,6 +24,7 @@ class Venta {
         this.importe = importe;
         this.fechaVenta = fechaVenta;
     }
+
     toHtmlRow() {
         let row = "<tr>";
         row += "<td>" + this.Cliente.nif + "</td>";
@@ -37,6 +40,7 @@ class Venta {
         row += "</tr>";
     }
 }
+
 class Compra {
     constructor(Cliente, Vehiculo, importe, fechaCompra) {
         this.Cliente = Cliente;
@@ -44,6 +48,7 @@ class Compra {
         this.importe = importe;
         this.fechaCompra = fechaCompra;
     }
+
     toHtmlRow() {
         let row = "<tr>";
         row += "<td>" + this.Cliente.nif + "</td>";
@@ -59,6 +64,7 @@ class Compra {
         row += "</tr>";
     }
 }
+
 class Vehiculo {
     constructor(matricula, marca, modelo, combustible) {
         this.matricula = matricula;
@@ -66,6 +72,7 @@ class Vehiculo {
         this.modelo = modelo;
         this.combustible = combustible;
     }
+
     toHtmlRow() {
         let row = "<tr>";
         row += "<td>" + this.Vehiculo.matricula + "</td>";
@@ -75,6 +82,7 @@ class Vehiculo {
         row += "</tr>";
     }
 }
+
 class Turismo extends Vehiculo {
     constructor(matricula, marca, modelo, combustible, abs, descapotable, numPuertas) {
         super(matricula, marca, modelo, combustible);
@@ -82,6 +90,7 @@ class Turismo extends Vehiculo {
         this.descapotable = descapotable;
         this.numPuertas = numPuertas;
     }
+
     toHtmlRow() {
         let row = "<tr>";
         row += "<td>" + this.Vehiculo.matricula + "</td>";
@@ -94,11 +103,13 @@ class Turismo extends Vehiculo {
         row += "</tr>";
     }
 }
+
 class V4x4 {
     constructor(matricula, marca, modelo, combustible, pendienteMax) {
         super(matricula, marca, modelo, combustible);
         this.pendienteMax = pendienteMax;
     }
+
     toHtmlRow() {
         let row = "<tr>";
         row += "<td>" + this.Vehiculo.matricula + "</td>";
@@ -117,15 +128,26 @@ class QuintoCar {
         this.Compras = [];
         this.Vehiculos = [];
     }
-    altaCliente(cliente) {
-        return String;
-    }
+}
 
-    altaVehiculo(vehiculo) {
-        return String
+altaCliente(cliente) {
+    if (Clientes.filter(clienteTemp => clienteTemp.nif == cliente.nif).length == 0) {
+        Clientes.push(cliente);
+        return "Cliente dado de alta";
+    }
+    return "El cliente ya existe";
+}
+
+altaVehiculo(vehiculo) {
+    if ((Clientes.filter(vehiculotemp => vehiculoTemp.matricula == vehiculo.matricula).length == 0) {
+            Clientes.push(vehiculo);
+            return "Vehiculo dado de alta";
+        }
+        return "El vehiculo ya existe";
     }
 
     buscarCliente(nif) {
+        Clientes.foreach()
         return Cliente;
     }
 
