@@ -119,7 +119,7 @@ function ventaVehiculo(){
 
 /////////////////// Listados ///////////////////
 var pestañaListados = null; // Pestaña donde se mostrará los listados
-let btnModal;
+let btnModal; // Define si al introducir las fechas va a un listado u otro
 
 eventoEn("clickLVehiculoVenta","click",clickLVehiculoVenta);
 eventoEn("clickLVendidos","click",clickLVendidos);
@@ -129,23 +129,18 @@ eventoEn("clickLClientes","click",clickLClientes);
 eventoEn("verListado","click",botonModal);	
 
 function clickLVehiculoVenta(){ abreListadoPestaña("Listado vehículos en venta","Vehículos en venta"); }
-function clickLVendidos(){ btnModal = "vendidos"; }
-function clickLComprados(){ btnModal = "comprados"; }
 function clickLVehiculos(){	abreListadoPestaña("Listado vehículos","Vehículos"); }
 function clickLClientes(){ abreListadoPestaña(quintocar.listadoClientes(),"Clientes"); }
-function botonModal(){
-	if(btnModal == "vendidos"){
-		abreListadoPestaña(quintocar.listadoVendidosperiodo(formFechas.fechaInicio,formFechas.fechaFinal),"Vehículos vendidos");
-	}
-	else if (btnModal == "comprados"){
-		abreListadoPestaña(quintocar.listadoCompradosperiodo(formFechas.fechaInicio,formFechas.fechaFinal),"Vehículos Comprados");
-	}
+function clickLVendidos(){ btnModal = "vendidos"; }
+function clickLComprados(){ btnModal = "comprados"; }
+function botonModal(){ // Enseña un listado u otro
+	if(btnModal == "vendidos"){ abreListadoPestaña(quintocar.listadoVendidosperiodo(formFechas.fechaInicio,formFechas.fechaFinal),"Vehículos vendidos");}
+	else if (btnModal == "comprados"){ abreListadoPestaña(quintocar.listadoCompradosperiodo(formFechas.fechaInicio,formFechas.fechaFinal),"Vehículos Comprados");}
 }
 
 function abreListadoPestaña(listado,titulo){
-	if(!pestañaListados || pestañaListados.closed){
-		pestañaListados = window.open("");
-	}
+	if(!pestañaListados || pestañaListados.closed){ pestañaListados = window.open(""); }
+	
 	pestañaListados.document.head.innerHTML = '<meta charset="utf-8"><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"><title>'+titulo+'</title>';
 	pestañaListados.document.body.innerHTML = listado;
 	pestañaListados.focus();
