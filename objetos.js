@@ -1,7 +1,7 @@
 "use strict";
 class Cliente {
     constructor(nif, nombre, apellidos, telefono) {
-        this.dni = dni;
+        this.nif = nif;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.telefono = telefono;
@@ -123,27 +123,26 @@ class V4x4 extends Vehiculo {
 
 class QuintoCar {
     constructor() {
-        this.Clientes = [];
-        this.Ventas = [];
-        this.Compras = [];
-        this.Vehiculos = [];
+        this.clientes = [];
+        this.Vvntas = [];
+        this.compras = [];
+        this.vehiculos = [];
     }
-}
 
-altaCliente(cliente) {
-    if (Clientes.filter(clienteTemp => clienteTemp.nif == cliente.nif).length == 0) {
-        Clientes.push(cliente);
-        return "Cliente dado de alta";
-    }
-    return "El cliente ya existe";
-}
-
-altaVehiculo(vehiculo) {
-    if ((Clientes.filter(vehiculotemp => vehiculoTemp.matricula == vehiculo.matricula).length == 0) {
-            Clientes.push(vehiculo);
-            return "Vehiculo dado de alta";
+    altaCliente(cliente) {
+        if (clientes.filter(clienteTemp => clienteTemp.nif == cliente.nif).length == 0) {
+            clientes.push(cliente);
+            return "Cliente dado de alta";
         }
-        return "El vehiculo ya existe";
+        return "El cliente ya existe";
+    }
+
+    altaVehiculo(vehiculo) {
+        if (clientes.filter(vehiculotemp => vehiculoTemp.matricula == vehiculo.matricula).length == 0) {
+                clientes.push(vehiculo);
+                return "Vehiculo dado de alta";
+        }
+            return "El vehiculo ya existe";
     }
 
     buscarCliente(nif) {
