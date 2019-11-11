@@ -133,10 +133,11 @@ function clickLVehiculos(){	abreListadoPestaña("Listado vehículos","Vehículos
 function clickLClientes(){ abreListadoPestaña(quintocar.listadoClientes(),"Clientes"); }
 function abreListadoPestaña(listado,titulo){
 	if(!pestañaAbierta){
-		pestañaListados = window.open("",titulo);
+		pestañaListados = window.open("",titulo,"");
 		pestañaAbierta = true;
 	}
-	pestañaListados.document.innerHTML = "aaaaa";
+	pestañaListados.document.head.innerHTML = '<meta charset="utf-8"><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">'
+	pestañaListados.document.body.innerHTML = listado;
 }
 
 /////////////////// Validaciones ///////////////////
