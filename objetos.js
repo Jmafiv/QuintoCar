@@ -147,16 +147,33 @@ altaVehiculo(vehiculo) {
     }
 
     buscarCliente(nif) {
-        Clientes.foreach()
-        return Cliente;
+        Clientes.foreach(compara);
+
+        function compara(cliente, index) {
+            if (cliente.nif == nif) {
+                return cliente;
+            }
+        }
     }
 
-    buscarCompra(Vehiculo) {
-        return Compra;
+    buscarCompra(vehiculo) {
+        Compras.foreach(compara);
+
+        function compara(compra, index) {
+            if (compra.vehiculo == vehiculo) {
+                return compra;
+            }
+        }
     }
 
     buscarVenta(Vehiculo) {
-        return Venta;
+        Ventas.foreach(compara);
+
+        function compara(venta, index) {
+            if (venta.vehiculo == vehiculo) {
+                return venta;
+            }
+        }
     }
 
     Comprar(matricula, nif, importe, fecha) {
