@@ -1,5 +1,5 @@
 "use strict";
-
+var quintocar = new QuintoCar();
 /////////////////// Eventos de la página ///////////////////
 // Asignar a los elementos un evento (Evitando poner onclick en el html)
 var opcion; // Guarda qué se está mostrando y según lo que muestra envia una cosa u otra
@@ -19,8 +19,8 @@ function mostrarAltaCliente () {
 }
 function mostrarAltaVehiculo () {
 	opcion = "altaVehiculo";
-	ocultaCosas(["F-altaCliente","T-altaVehiculo","F-comprarVehiculo","F-venderVehiculo"]);
 	mostrarSegunTipo();
+	ocultaCosas(["F-altaCliente","T-altaVehiculo","F-comprarVehiculo","F-venderVehiculo"]);
 }
 function mostrarCompraVehiculo () {
 	opcion = "compraVehiculo";
@@ -31,7 +31,7 @@ function mostrarVentaVehiculo () {
 	ocultaCosas(["F-altaCliente","F-altaVehiculo","F-comprarVehiculo","T-venderVehiculo"]);
 }
 function mostrarSegunTipo(){ // Oculta los detalles según el tipo del vehículo señalado
-	if(document.getElementById("tipo").value=="Turismo"){ ocultaCosas(["F-pendiente","T-abs","T-descapotable","T-numPuertas"]);	}
+	if(formulario.tipo.value=="Turismo"){ ocultaCosas(["F-pendiente","T-abs","T-descapotable","T-numPuertas"]);	}
 	else{ ocultaCosas(["T-pendiente","F-abs","F-descapotable","F-numPuertas"]); }
 }
 
@@ -64,7 +64,6 @@ eventoEn("enviar","click",enviar);
 function enviar(){ // Según lo que se muestra en pantalla se envia a un método o a otro
 	switch (opcion) {
 		case "altaCliente":
-			// mensajeErrorDebajo(formulario.nif,"Tiene que ser un NIF correcto.");   //Ejemplo de mensaje debajo del elemento de validación
 			altaCliente();
 			break;
 		case "altaVehiculo":
@@ -82,8 +81,29 @@ function enviar(){ // Según lo que se muestra en pantalla se envia a un método
 }
 
 function altaCliente(){
+	let nif = formulario.nif.value;
+	let nombre = formulario.nombre.value;
+	let apellidos = formulario.apellidos.value;
+	let telefono = formulario.telefono.value;
+	let cliente = new Cliente(nif,nombre,apellidos,telefono);
+	quintocar.altaCliente(cliente);
 }
 function altaVehiculo(){
+	let matricula = formulario.matricula.value;
+	let marca = formulario.marca.value;
+	let modelo = formulario.modelo.value;
+	let combustible = formulario.combustible.value;
+	if(formulario.tipo.value=="Turismo"){
+		let abs = formulario.abs.value;
+		let descapotable = formulario.descapotable.value;
+		let numPuertas = formulario.numPuertas.value;
+		let vehiculo = new Turismo(matricula,marca,modelo,combustible,abs,descapotable,numPuertas);
+	}
+	else{
+		let pendiente = formulario.pendiente.value;
+		let vehiculo = new V4x4(matricula,marca,modelo,combustible,pendiente);
+	}
+	quintocar.altaVehiculo(vehiculo);
 }
 function compraVehiculo(){
 }
