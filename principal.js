@@ -119,7 +119,7 @@ function ventaVehiculo(){
 
 /////////////////// Listados ///////////////////
 var pestañaListados = null; // Pestaña donde se mostrará los listados
-var pestañaAbierta = false; // Los listados se cargarán en la misma pestaña
+
 eventoEn("clickLVehiculoVenta","click",clickLVehiculoVenta);
 eventoEn("clickLVendidos","click",clickLVendidos);
 eventoEn("clickLComprados","click",clickLComprados);
@@ -131,13 +131,14 @@ function clickLVendidos(){ abreListadoPestaña("Listado vehículos vendidos","Ve
 function clickLComprados(){	abreListadoPestaña("Listado vehículos comprados","Vehículos comprados"); }
 function clickLVehiculos(){	abreListadoPestaña("Listado vehículos","Vehículos"); }
 function clickLClientes(){ abreListadoPestaña(quintocar.listadoClientes(),"Clientes"); }
+
 function abreListadoPestaña(listado,titulo){
-	if(!pestañaAbierta){
+	if(!pestañaListados || pestañaListados.closed){
 		pestañaListados = window.open("");
-		pestañaAbierta = true;
 	}
 	pestañaListados.document.head.innerHTML = '<meta charset="utf-8"><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"><title>'+titulo+'</title>';
 	pestañaListados.document.body.innerHTML = listado;
+	pestañaListados.focus();
 }
 
 /////////////////// Validaciones ///////////////////
