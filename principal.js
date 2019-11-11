@@ -124,19 +124,19 @@ eventoEn("clickLVehiculoVenta","click",clickLVehiculoVenta);
 eventoEn("clickLVendidos","click",clickLVendidos);
 eventoEn("clickLComprados","click",clickLComprados);
 eventoEn("clickLVehiculos","click",clickLVehiculos);
-eventoEn("clickLClientes","click",clickLClientes);
+eventoEn("clickLClientes","click",clickLClientes);	
 
 function clickLVehiculoVenta(){ abreListadoPestaña("Listado vehículos en venta","Vehículos en venta"); }
 function clickLVendidos(){ abreListadoPestaña("Listado vehículos vendidos","Vehículos vendidos"); }
 function clickLComprados(){	abreListadoPestaña("Listado vehículos comprados","Vehículos comprados"); }
 function clickLVehiculos(){	abreListadoPestaña("Listado vehículos","Vehículos"); }
-function clickLClientes(){ abreListadoPestaña("Listado clientes","Clientes"); }
+function clickLClientes(){ abreListadoPestaña(quintocar.listadoClientes(),"Clientes"); }
 function abreListadoPestaña(listado,titulo){
 	if(!pestañaAbierta){
-		pestañaListados = window.open("",titulo,"");
+		pestañaListados = window.open("",titulo);
 		pestañaAbierta = true;
 	}
-	pestañaListados.document.body.innerHTML = listado;
+	pestañaListados.document.innerHTML = "aaaaa";
 }
 
 /////////////////// Validaciones ///////////////////

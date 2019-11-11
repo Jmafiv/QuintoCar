@@ -200,6 +200,11 @@ class QuintoCar {
     }
 
     listadoClientes() {
-        return table;
+        let tabla = "<table class='table'><thead class='thead-dark'><tr><th scope='col'>NIF</th><th scope='col'>Nombre</th><th scope='col'>Apellidos</th><th scope='col'>Teléfono</th></tr></thead><tbody>";
+        this.clientes.forEach( function(cliente) {
+            tabla+=cliente.toHtmlRow;
+        });
+        tabla += "</tbody></table>";
+        return tabla;
     }
 }
