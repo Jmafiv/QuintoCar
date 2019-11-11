@@ -128,7 +128,7 @@ eventoEn("clickLVehiculos","click",clickLVehiculos);
 eventoEn("clickLClientes","click",clickLClientes);	
 eventoEn("verListado","click",botonModal);	
 
-function clickLVehiculoVenta(){ abreListadoPestaña("Listado vehículos en venta","Vehículos en venta"); }
+function clickLVehiculoVenta(){ abreListadoPestaña(quintocar.listadoALaVenta(),"Vehículos en venta"); }
 function clickLVehiculos(){	abreListadoPestaña("Listado vehículos","Vehículos"); }
 function clickLClientes(){ abreListadoPestaña(quintocar.listadoClientes(),"Clientes"); }
 function clickLVendidos(){ btnModal = "vendidos"; }
@@ -166,6 +166,13 @@ function datosIniciales() {
     cliente = new Cliente("12323434W", "Marta", "Carrasco", 741542658);
     quintocar.altaCliente(cliente);
     cliente = new Cliente("56743281R", "Adrián", "López", 954618295);
-    quintocar.altaCliente(cliente);    
+    quintocar.altaCliente(cliente);
+
+    var vehiculo = new Vehiculo("0583CXV", "Seat", "Ibiza", "Diesel");
+    quintocar.altaVehiculo(vehiculo);
+    var vehiculo = new Vehiculo("9588FFT", "Ford", "Fiesta", "Gasolina");
+    quintocar.altaVehiculo(vehiculo);
+    var vehiculo = new Vehiculo("0001EAT", "Opel", "Astra", "Diesel");
+    quintocar.altaVehiculo(vehiculo);   
 
 }

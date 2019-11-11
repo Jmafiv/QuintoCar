@@ -190,7 +190,13 @@ class QuintoCar {
     }
 
     listadoALaVenta() {
-        return table;
+
+        let tabla = "<table class='table'><thead class='thead-dark'><tr><th scope='col'>Matrícula</th><th scope='col'>Marca</th><th scope='col'>Modelo</th><th scope='col'>Combustible</th></tr></thead><tbody>";
+        this.vehiculos.forEach( function(vehiculo) {
+            tabla+=vehiculo.toHtmlRow();
+        });
+        tabla += "</tbody></table>";
+        return tabla;
     }
 
     listadoVendidosperiodo(fechaInicio, fechaFin) {
