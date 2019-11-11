@@ -34,8 +34,8 @@
 							<a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Listados</a>
 							<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 								<a class="dropdown-item" id="clickLVehiculoVenta">Vehículos a la venta</a>
-								<a class="dropdown-item" id="clickLVendidos">Vehículos vendidos en un periodo</a>
-								<a class="dropdown-item" id="clickLComprados">Vehículos comprados en un periodo</a>
+								<a class="dropdown-item" id="clickLVendidos"  data-toggle="modal" data-target="#exampleModalCenter">Vehículos vendidos en un periodo</a>
+								<a class="dropdown-item" id="clickLComprados"  data-toggle="modal" data-target="#exampleModalCenter">Vehículos comprados en un periodo</a>
 								<a class="dropdown-item" id="clickLVehiculos">Listado vehículos <span class="text-muted">(filtros)</span></a>
 								<a class="dropdown-item" id="clickLClientes">Listado clientes</a>
 							</div>
@@ -204,6 +204,41 @@
 						<button id="enviar" name="enter" type="submit" class="btn btn-primary btn-block">Enviar</button>
 					</form>
 					<p id="mensaje" class="alert alert-info oculta"></p>
+
+					<!-- Modal -->
+					<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+					  <div class="modal-dialog modal-dialog-centered" role="document">
+					    <div class="modal-content">
+					      <div class="modal-header">
+					        <h5 class="modal-title" id="exampleModalLongTitle">Elige un periodo</h5>
+					        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					        <span aria-hidden="true">&times;</span>
+					        </button>
+					      </div>
+					      <div class="modal-body">
+					      	<form name="formFechas">
+						      	<div class="form-group row">
+									<label for="fechaInicio" class="col-4 col-form-label">Fecha Inicio</label>
+									<div class="col-8">
+										<input name="fechaInicio" type="date" class="form-control" required>
+											<div class="invalid-feedback"></div>
+									</div>
+								</div>
+								<div class="form-group row">
+									<label for="fechaInicio" class="col-4 col-form-label">Fecha Final</label>
+									<div class="col-8">
+										<input name="fechaInicio" type="date" class="form-control" required>
+											<div class="invalid-feedback"></div>
+									</div>
+								</div>
+					      	</form>
+					      </div>
+					      <div class="modal-footer">
+					        <button type="button" class="btn btn-primary" name="verListado">Ver listado</button>
+					      </div>
+					    </div>
+					  </div>
+					</div>
 				</div>
 			</div>
 		</div>
