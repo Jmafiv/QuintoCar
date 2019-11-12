@@ -163,7 +163,7 @@ function altaVehiculo(){
 }
 function compraVehiculo(){
 	// (new Date(form.fechaCita.value)).toLocaleDateString(); // Para pasar de YYYY-MM-DD a DD/MM/YYYY los formularios "date"
-}
+	}
 function ventaVehiculo(){
 }
 
