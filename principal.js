@@ -41,8 +41,6 @@ function mostrarSegunTipo(){ // Oculta los detalles según el tipo del vehículo
 
 /////////////////// Mostrar/Ocultar los formularios ///////////////////
 function ocultaCosas(array,menu){
-	document.getElementById("mensaje").classList.add("oculta");
-
 	formulario.classList.remove("oculta");
 	for (var i = 0; i < array.length; i++) {
 		if(array[i].substring(0,1)=="F"){ //Si no se tiene que mostrar:
