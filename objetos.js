@@ -184,6 +184,8 @@ class QuintoCar {
     }
 
     comprar(matricula, nif, importe, fecha) {
+    	
+
         return String;
     }
 
@@ -231,8 +233,23 @@ class QuintoCar {
     }
 
     listadoComprasperiodo(fechaInicio, fechaFin) {
-        return "listadoComprasperiodo";
-    }
+        // Cabecera de la tabla
+        let tabla = "<div class='table-responsive'><table class='table'><thead class='thead-dark'><tr><th scope='col'>Matricula</th><th scope='col'>Marca</th><th scope='col'>Modelo</th><th scope='col'>Combustible</th><th>ABS</th><th>Descapotable</th><th>Nº Puertas</th><th>Pendiente Máxima</th><th>Fecha Compra</th><th>Importe Venta</th><th>Importe Compra</th><th>Fecha Venta</th><th>Beneficio</th></tr></thead><tbody>";
+        // Línea de cada compra
+        this.compras.forEach( (compra) => {
+            if(compra.fechaCompra > fechaInicio && compra.fechaCompra < fechaFin){ // Comprueba si se compró en el periodo dado
+                tabla += "<tr><td>"+compra.vehiculo.matricula+"</td><td>"+compra.vehiculo.marca+"</td><td>"+compra.vehiculo.modelo+"</td><td>"+compra.vehiculo.combustible+"</td>"; // Añade los datos básicos de vehículo
+                if(compra.vehiculo instanceof Turismo){ // Añade los datos específicos de su tipo
+                    tabla+="<td>"+(compra.vehiculo.abs?"Sí":"No")+"</td><td>"+(compra.vehiculo.descapotable?"Sí":"No")+"</td><td>"+compra.vehiculo.numPuertas+"</td><td>-</td>";
+                }
+                else{ // Deja vacías las celdas que no son de su tipo
+                    tabla+="<td></td><td></td><td></td><td>"+compra.vehiculo.pendienteMax+"</td>";
+                }
+                tabla+="<td>"+compraCoche.fechaCompra.toLocaleDateString()+"</td><td>"+compra.fechaCompra.toLocaleDateString()+"</td><td>"+compraCoche.importe+"</td><td>"+venta.importe+"</td><td>"+(venta.importe - compraCoche.importe)+"</td></tr>";
+           }
+        });
+        tabla += "</tbody></table></div>";
+        return tabla;    }
 
     listadoVehiculos(tipo,combustible) {
         if(tipo=="turismo"){
