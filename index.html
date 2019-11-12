@@ -126,14 +126,14 @@
 								<div id="numPuertas" class="form-check form-check-inline">
 									<label for="numPuertas" class="col-3 col-form-label">Nº Puertas</label>
 									<div class="col-6">
-										<input name="numPuertas" type="number" class="form-control" required>
+										<input name="numPuertas" type="number" min="1" value="1" class="form-control" required>
 										<div class="invalid-feedback"></div>
 									</div>
 								</div>
 								<div id="pendiente" class="form-check form-check-inline oculta">
 									<label for="pendiente" class="col-3 col-form-label">Pendiente Máxima</label>
 									<div class="col-6">
-										<input name="pendiente" type="number" class="form-control" required disabled>
+										<input name="pendiente" type="number" min="0" value="0" class="form-control" required disabled>
 										<div class="invalid-feedback"></div>
 									</div>
 								</div>

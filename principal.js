@@ -65,21 +65,70 @@ function deshabilitaInputs(elemento,NoSi){
 	}
 }
 
-/////////////////// Botón Enviar ///////////////////
+/////////////////// Botón Enviar Y Validación///////////////////
 eventoEn("enviar","click",enviar);
 
 function enviar(){ // Según lo que se muestra en pantalla se envia a un método o a otro
 	switch (opcion) {
 		case "altaCliente":
+		if (formulario.nif.value == "" ||
+			formulario.nombre.value == "" ||
+			formulario.apellidos.value == "" ||
+			formulario.telefono.value == "")
+		{
+			document.getElementById("mensaje").innerHTML = "Rellene todos los campos obligatorios";
+			break;
+		}
+		else
 			altaCliente();
 			break;
 		case "altaVehiculo":
+		let tipo = formulario.tipo.value;
+		switch (tipo)
+		{
+			case "Turismo":
+				if (formulario.matricula.value == "" ||
+				formulario.marca.value == "" ||
+				formulario.modelo.value == "" ||
+				formulario.combustible.value == "")
+				{
+					document.getElementById("mensaje").innerHTML = "Rellene todos los campos obligatorios";
+					break;
+				}
+			case "V4x4":
+				if (formulario.matricula.value == "" ||
+				formulario.marca.value == "" ||
+				formulario.modelo.value == "" ||
+				formulario.combustible.value == "")
+				{
+					document.getElementById("mensaje").innerHTML = "Rellene todos los campos obligatorios";
+					break;
+				}
 			altaVehiculo();
+		}
 			break;
 		case "compraVehiculo":
+		if (formulario.clienteCompra.value == "" ||
+		    formulario.vehiculoCompra.value == "" ||
+		    formulario.importeCompra.value == "" ||
+		    formulario.fechaCompra.value == null)
+		{
+			document.getElementById("mensaje").innerHTML = "Rellene todos los campos obligatorios";
+			break;
+		}
+		else
 			compraVehiculo();
 			break;
 		case "ventaVehiculo":
+		if (formulario.clienteVenta.value == "" ||
+		    formulario.vehiculoVenta.value == "" ||
+		    formulario.importeVenta.value == "" ||
+		    formulario.fechaVenta.value == null)
+		{
+			document.getElementById("mensaje").innerHTML = "Rellene todos los campos obligatorios";
+			break;
+		}
+		else
 			ventaVehiculo();
 			break;
 	}
