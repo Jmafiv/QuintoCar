@@ -203,14 +203,14 @@ class QuintoCar {
 
     listadoVendidosperiodo(fechaInicio, fechaFin) {
         // Cabecera de la tabla
-        let tabla = "<table class='table table-responsive'><thead class='thead-dark'><tr><th scope='col'>Matricula</th><th scope='col'>Marca</th><th scope='col'>Modelo</th><th scope='col'>Combustible</th><th>ABS</th><th>Descapotable</th><th>Nº Puertas</th><th>Pendiente Máxima</th><th>Fecha Compra</th><th>Importe Venta</th><th>Importe Compra</th><th>Fecha Venta</th><th>Beneficio</th></tr></thead><tbody>";
-        // Lína de cada venta
+        let tabla = "<div class='table-responsive'><table class='table'><thead class='thead-dark'><tr><th scope='col'>Matricula</th><th scope='col'>Marca</th><th scope='col'>Modelo</th><th scope='col'>Combustible</th><th>ABS</th><th>Descapotable</th><th>Nº Puertas</th><th>Pendiente Máxima</th><th>Fecha Compra</th><th>Importe Venta</th><th>Importe Compra</th><th>Fecha Venta</th><th>Beneficio</th></tr></thead><tbody>";
+        // Línea de cada venta
         this.ventas.forEach( (venta) => {
             let compraCoche = this.buscarCompra(venta.vehiculo); // Busca la compra del coche que se ha vendido
             if(venta.fechaVenta > fechaInicio && venta.fechaVenta < fechaFin){ // Comprueba si se vendió en el periodo dado
-                tabla += "<tr><td scope='col'>"+venta.vehiculo.matricula+"</td><td scope='col'>"+venta.vehiculo.marca+"</td><td scope='col'>"+venta.vehiculo.modelo+"</td><td scope='col'>"+venta.vehiculo.combustible+"</td>"; // Añade los datos básicos de vehículo
+                tabla += "<tr><td>"+venta.vehiculo.matricula+"</td><td>"+venta.vehiculo.marca+"</td><td>"+venta.vehiculo.modelo+"</td><td>"+venta.vehiculo.combustible+"</td>"; // Añade los datos básicos de vehículo
                 if(venta.vehiculo instanceof Turismo){ // Añade los datos específicos de su tipo
-                    tabla+="<td>"+(venta.vehiculo.abs?"Sí":"No")+"</td><td>"+(venta.vehiculo.descapotable?"Sí":"No")+"</td><td>"+venta.vehiculo.numPuertas+"</td><td></td>";
+                    tabla+="<td>"+(venta.vehiculo.abs?"Sí":"No")+"</td><td>"+(venta.vehiculo.descapotable?"Sí":"No")+"</td><td>"+venta.vehiculo.numPuertas+"</td><td>-</td>";
                 }
                 else{ // Deja vacías las celdas que no son de su tipo
                     tabla+="<td></td><td></td><td></td><td>"+venta.vehiculo.pendienteMax+"</td>";
@@ -218,7 +218,7 @@ class QuintoCar {
                 tabla+="<td>"+compraCoche.fechaCompra.toLocaleDateString()+"</td><td>"+venta.fechaVenta.toLocaleDateString()+"</td><td>"+compraCoche.importe+"</td><td>"+venta.importe+"</td><td>"+(venta.importe - compraCoche.importe)+"</td></tr>";
            }
         });
-        tabla += "</tbody></table>";
+        tabla += "</tbody></table></div>";
         return tabla;
     }
 
