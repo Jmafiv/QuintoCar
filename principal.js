@@ -113,6 +113,7 @@ function altaVehiculo(){
 	mensaje(quintocar.altaVehiculo(vehiculo));
 }
 function compraVehiculo(){
+	// (new Date(form.fechaCita.value)).toLocaleDateString(); // Para pasar de YYYY-MM-DD a DD/MM/YYYY los formularios "date"
 }
 function ventaVehiculo(){
 }
@@ -134,8 +135,10 @@ function clickLClientes(){ abreListadoPestaña(quintocar.listadoClientes(),"Clie
 function clickLVendidos(){ btnModal = "vendidos"; }
 function clickLComprados(){ btnModal = "comprados"; }
 function botonModal(){ // Enseña un listado u otro
-	if(btnModal == "vendidos"){ abreListadoPestaña(quintocar.listadoVendidosperiodo(formFechas.fechaInicio,formFechas.fechaFinal),"Vehículos vendidos");}
-	else if (btnModal == "comprados"){ abreListadoPestaña(quintocar.listadoCompradosperiodo(formFechas.fechaInicio,formFechas.fechaFinal),"Vehículos Comprados");}
+	let fInicio = new Date(document.getElementById("fechaInicio").value);
+	let fFinal = new Date(document.getElementById("fechaFinal").value);
+	if(btnModal == "vendidos"){ abreListadoPestaña(quintocar.listadoVendidosperiodo(fInicio,fFinal),"Vehículos vendidos");}
+	else if (btnModal == "comprados"){ abreListadoPestaña(quintocar.listadoCompradosperiodo(fInicio,fFinal),"Vehículos Comprados");}
 }
 
 function abreListadoPestaña(listado,titulo){
@@ -146,7 +149,7 @@ function abreListadoPestaña(listado,titulo){
 	pestañaListados.focus();
 }
 
-/////////////////// Validaciones ///////////////////
+/////////////////// Validaciones /////////////////
 
 function mensajeErrorDebajo(elemento,mensaje){
 	elemento.parentElement.getElementsByClassName("invalid-feedback")[0].innerHTML = mensaje;

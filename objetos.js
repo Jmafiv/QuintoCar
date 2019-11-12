@@ -19,14 +19,14 @@ class Cliente {
 }
 
 class Venta {
-    constructor(Cliente, Vehiculo, importe, fechaVenta) { //importe es float
-        this.Cliente = Cliente;
-        this.Vehiculo = Vehiculo;
+    constructor(cliente, vehiculo, importe, fechaVenta) { //importe es float
+        this.cliente = cliente;
+        this.vehiculo = vehiculo;
         this.importe = importe;
         this.fechaVenta = fechaVenta;
     }
 
-    toHtmlRow() {
+    toHtmlRow() { // Necesita acceso a las compras
         let row = "<tr>";
         row += "<td>" + this.nif + "</td>";
         row += "<td>" + this.nombre + "</td>";
@@ -44,14 +44,14 @@ class Venta {
 }
 
 class Compra {
-    constructor(Cliente, Vehiculo, importe, fechaCompra) {
-        this.Cliente = Cliente;
-        this.Vehiculo = Vehiculo;
+    constructor(cliente, vehiculo, importe, fechaCompra) {
+        this.cliente = cliente;
+        this.vehiculo = vehiculo;
         this.importe = importe;
         this.fechaCompra = fechaCompra;
     }
 
-    toHtmlRow() {
+    toHtmlRow() { // Necesita acceso a las ventas
         let row = "<tr>";
         row += "<td>" + this.nif + "</td>";
         row += "<td>" + this.nombre + "</td>";
@@ -130,7 +130,7 @@ class V4x4 extends Vehiculo {
 class QuintoCar {
     constructor() {
         this.clientes = [];
-        this.Ventas = [];
+        this.ventas = [];
         this.compras = [];
         this.vehiculos = [];
     }
@@ -152,7 +152,7 @@ class QuintoCar {
     }
 
     buscarCliente(nif) {
-        this.clientes.foreach(compara);
+        this.clientes.forEach(compara);
 
         function compara(cliente, index) {
             if (cliente.nif == nif) {
@@ -162,30 +162,32 @@ class QuintoCar {
     }
 
     buscarCompra(vehiculo) {
-        this.compras.foreach(compara);
-
+        let c;
+        this.compras.forEach(compara);
         function compara(compra, index) {
-            if (compra.vehiculo == vehiculo) {
-                return compra;
+            if (compra.vehiculo.matricula == vehiculo.matricula) {
+               c = compra;
             }
         }
+        return c;
     }
 
-    buscarVenta(Vehiculo) {
-        this.ventas.foreach(compara);
-
+    buscarVenta(vehiculo) {
+        let v;
+        this.ventas.forEach(compara);
         function compara(venta, index) {
-            if (venta.vehiculo == vehiculo) {
-                return venta;
+            if (venta.vehiculo.matricula == vehiculo.matricula) {
+               v = venta;
             }
         }
+        return v;
     }
 
-    Comprar(matricula, nif, importe, fecha) {
+    comprar(matricula, nif, importe, fecha) {
         return String;
     }
 
-    Vender(matricula, nif, importe, fecha) {
+    vender(matricula, nif, importe, fecha) {
         return String;
     }
 
@@ -200,7 +202,24 @@ class QuintoCar {
     }
 
     listadoVendidosperiodo(fechaInicio, fechaFin) {
-        return "listadoVendidosperiodo";
+        // Cabecera de la tabla
+        let tabla = "<table class='table table-responsive'><thead class='thead-dark'><tr><th scope='col'>Matricula</th><th scope='col'>Marca</th><th scope='col'>Modelo</th><th scope='col'>Combustible</th><th>ABS</th><th>Descapotable</th><th>Nº Puertas</th><th>Pendiente Máxima</th><th>Fecha Compra</th><th>Importe Venta</th><th>Importe Compra</th><th>Fecha Venta</th><th>Beneficio</th></tr></thead><tbody>";
+        // Lína de cada venta
+        this.ventas.forEach( (venta) => {
+            let compraCoche = this.buscarCompra(venta.vehiculo); // Busca la compra del coche que se ha vendido
+            if(venta.fechaVenta > fechaInicio && venta.fechaVenta < fechaFin){ // Comprueba si se vendió en el periodo dado
+                tabla += "<tr><td scope='col'>"+venta.vehiculo.matricula+"</td><td scope='col'>"+venta.vehiculo.marca+"</td><td scope='col'>"+venta.vehiculo.modelo+"</td><td scope='col'>"+venta.vehiculo.combustible+"</td>"; // Añade los datos básicos de vehículo
+                if(venta.vehiculo instanceof Turismo){ // Añade los datos específicos de su tipo
+                    tabla+="<td>"+(venta.vehiculo.abs?"Sí":"No")+"</td><td>"+(venta.vehiculo.descapotable?"Sí":"No")+"</td><td>"+venta.vehiculo.numPuertas+"</td><td></td>";
+                }
+                else{ // Deja vacías las celdas que no son de su tipo
+                    tabla+="<td></td><td></td><td></td><td>"+venta.vehiculo.pendienteMax+"</td>";
+                }
+                tabla+="<td>"+compraCoche.fechaCompra.toLocaleDateString()+"</td><td>"+venta.fechaVenta.toLocaleDateString()+"</td><td>"+compraCoche.importe+"</td><td>"+venta.importe+"</td><td>"+(venta.importe - compraCoche.importe)+"</td></tr>";
+           }
+        });
+        tabla += "</tbody></table>";
+        return tabla;
     }
 
     listadoComprasperiodo(fechaInicio, fechaFin) {
