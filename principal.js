@@ -149,7 +149,7 @@ function abreListadoPestaña(listado,titulo){
 	pestañaListados.focus();
 }
 
-/////////////////// Validaciones ///////////////////
+/////////////////// Validaciones /////////////////
 
 function mensajeErrorDebajo(elemento,mensaje){
 	elemento.parentElement.getElementsByClassName("invalid-feedback")[0].innerHTML = mensaje;

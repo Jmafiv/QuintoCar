@@ -68,3 +68,4 @@ Aquí se declaran las clases y sus métodos.
 * **listadoComprasperiodo(fechaInicio, fechaFin)** - Busca los vehículos comprados y devuelve una string con la tabla de datos.
 * **listadoVehiculos()** - Busca todos los vehículos y devuelve una string con la tabla de datos.
 * **listadoClientes()** - Busca todos los clientes y devuelve una string con la tabla de datos.
+
