@@ -76,7 +76,7 @@ function enviar(){ // Según lo que se muestra en pantalla se envia a un método
 			formulario.apellidos.value == "" ||
 			formulario.telefono.value == "")
 		{
-			document.getElementById("mensaje").innerHTML = "Rellene todos los campos obligatorios";
+			mensaje("Rellene todos los campos obligatorios");
 			break;
 		}
 		else
@@ -92,7 +92,7 @@ function enviar(){ // Según lo que se muestra en pantalla se envia a un método
 				formulario.modelo.value == "" ||
 				formulario.combustible.value == "")
 				{
-					document.getElementById("mensaje").innerHTML = "Rellene todos los campos obligatorios";
+					mensaje("Rellene todos los campos obligatorios");
 					break;
 				}
 			case "V4x4":
@@ -101,7 +101,7 @@ function enviar(){ // Según lo que se muestra en pantalla se envia a un método
 				formulario.modelo.value == "" ||
 				formulario.combustible.value == "")
 				{
-					document.getElementById("mensaje").innerHTML = "Rellene todos los campos obligatorios";
+					mensaje("Rellene todos los campos obligatorios");
 					break;
 				}
 			altaVehiculo();
@@ -113,7 +113,7 @@ function enviar(){ // Según lo que se muestra en pantalla se envia a un método
 		    formulario.importeCompra.value == "" ||
 		    formulario.fechaCompra.value == null)
 		{
-			document.getElementById("mensaje").innerHTML = "Rellene todos los campos obligatorios";
+			mensaje("Rellene todos los campos obligatorios");
 			break;
 		}
 		else
@@ -125,7 +125,7 @@ function enviar(){ // Según lo que se muestra en pantalla se envia a un método
 		    formulario.importeVenta.value == "" ||
 		    formulario.fechaVenta.value == null)
 		{
-			document.getElementById("mensaje").innerHTML = "Rellene todos los campos obligatorios";
+			mensaje("Rellene todos los campos obligatorios");
 			break;
 		}
 		else

@@ -218,66 +218,59 @@ class QuintoCar {
         this.ventas.forEach( (venta) => {
             let compraCoche = this.buscarCompra(venta.vehiculo); // Busca la compra del coche que se ha vendido
             if(venta.fechaVenta > fechaInicio && venta.fechaVenta < fechaFin){ // Comprueba si se vendió en el periodo dado
-                tabla += "<tr><td>"+venta.vehiculo.matricula+"</td><td>"+venta.vehiculo.marca+"</td><td>"+venta.vehiculo.modelo+"</td><td>"+venta.vehiculo.combustible+"</td>"; // Añade los datos básicos de vehículo
-                if(venta.vehiculo instanceof Turismo){ // Añade los datos específicos de su tipo
-                    tabla+="<td>"+(venta.vehiculo.abs?"Sí":"No")+"</td><td>"+(venta.vehiculo.descapotable?"Sí":"No")+"</td><td>"+venta.vehiculo.numPuertas+"</td><td>-</td>";
-                }
-                else{ // Deja vacías las celdas que no son de su tipo
-                    tabla+="<td>-</td><td>-</td><td>-</td><td>"+venta.vehiculo.pendienteMax+"</td>";
-                }
+                tabla += this.todosLosDatosVehiculo(venta.vehiculo).substring(0,-5);
                 tabla+="<td>"+compraCoche.fechaCompra.toLocaleDateString()+"</td><td>"+venta.fechaVenta.toLocaleDateString()+"</td><td>"+compraCoche.importe+"</td><td>"+venta.importe+"</td><td>"+(venta.importe - compraCoche.importe)+"</td></tr>";
            }
         });
         tabla += "</tbody></table></div>";
         return tabla;
     }
-
-    listadoComprasperiodo(fechaInicio, fechaFin) {
+    listadoCompradosperiodo(fechaInicio, fechaFin) {
         // Cabecera de la tabla
         let tabla = "<div class='table-responsive'><table class='table'><thead class='thead-dark'><tr><th scope='col'>Matricula</th><th scope='col'>Marca</th><th scope='col'>Modelo</th><th scope='col'>Combustible</th><th>ABS</th><th>Descapotable</th><th>Nº Puertas</th><th>Pendiente Máxima</th><th>Fecha Compra</th><th>Importe Venta</th><th>Importe Compra</th><th>Fecha Venta</th><th>Beneficio</th></tr></thead><tbody>";
         // Línea de cada compra
         this.compras.forEach( (compra) => {
             if(compra.fechaCompra > fechaInicio && compra.fechaCompra < fechaFin){ // Comprueba si se compró en el periodo dado
-                tabla += "<tr><td>"+compra.vehiculo.matricula+"</td><td>"+compra.vehiculo.marca+"</td><td>"+compra.vehiculo.modelo+"</td><td>"+compra.vehiculo.combustible+"</td>"; // Añade los datos básicos de vehículo
-                if(compra.vehiculo instanceof Turismo){ // Añade los datos específicos de su tipo
-                    tabla+="<td>"+(compra.vehiculo.abs?"Sí":"No")+"</td><td>"+(compra.vehiculo.descapotable?"Sí":"No")+"</td><td>"+compra.vehiculo.numPuertas+"</td><td>-</td>";
-                }
-                else{ // Deja vacías las celdas que no son de su tipo
-                    tabla+="<td></td><td></td><td></td><td>"+compra.vehiculo.pendienteMax+"</td>";
-                }
-                tabla+="<td>"+compraCoche.fechaCompra.toLocaleDateString()+"</td><td>"+compra.fechaCompra.toLocaleDateString()+"</td><td>"+compraCoche.importe+"</td><td>"+venta.importe+"</td><td>"+(venta.importe - compraCoche.importe)+"</td></tr>";
+                tabla += this.todosLosDatosVehiculo(compra.vehiculo).substring(0,-5);
+                tabla +="<td>"+compraCoche.fechaCompra.toLocaleDateString()+"</td><td>"+compra.fechaCompra.toLocaleDateString()+"</td><td>"+compraCoche.importe+"</td><td>"+venta.importe+"</td><td>"+(venta.importe - compraCoche.importe)+"</td></tr>";
            }
         });
         tabla += "</tbody></table></div>";
         return tabla;    }
 
     listadoVehiculos(tipo,combustible) {
-        if(tipo=="turismo"){
-            let tabla = "<table class='table'><thead class='thead-dark'><tr><th scope='col'>Matricula</th><th scope='col'>Marca</th><th scope='col'>Modelo</th><th scope='col'>Combustible</th><th>ABS</th><th>Descapotable</th><th>Nº Puertas</th></tr></thead><tbody>";
+        let tabla = "";
+        tabla = "<table class='table'><thead class='thead-light'><tr><th colspan='100%' class='text-center'>Tipo: "+tipo+" - Combustible: "+combustible+"</th></tr></thead>";
+        if(tipo=="Turismo"){
+            tabla += "<thead class='thead-dark'><tr><th scope='col'>Matricula</th><th scope='col'>Marca</th><th scope='col'>Modelo</th><th scope='col'>Combustible</th><th scope='col'>ABS</th><th scope='col'>Descapotable</th><th scope='col'>Nº Puertas</th></tr></thead><tbody>";
             this.vehiculos.forEach( (vehiculo) => {
-                if(vehiculo instanceof Turismo && (vehiculo.combustible == combustible  || combustible == "todos")){
-                    tabla+=vehiculo.toHtmlRow();
-                }
+                if(vehiculo instanceof Turismo && (vehiculo.combustible == combustible  || combustible == "Todos")){ tabla+=vehiculo.toHtmlRow();}
             });
         }
         else if(tipo=="V4x4"){
-            let tabla = "<table class='table'><thead class='thead-dark'><tr><th scope='col'>Matricula</th><th scope='col'>Marca</th><th scope='col'>Modelo</th><th scope='col'>Combustible</th><th>Pendiente Máxima</th></thead><tbody>";
+            tabla += "<thead class='thead-dark'><tr><th scope='col'>Matricula</th><th scope='col'>Marca</th><th scope='col'>Modelo</th><th scope='col'>Combustible</th><th scope='col'>Pendiente Máxima</th></thead><tbody>";
             this.vehiculos.forEach( (vehiculo) => {
-                if(vehiculo instanceof V4x4 && (vehiculo.combustible == combustible || combustible == "todos")){
-                    tabla+=vehiculo.toHtmlRow();
-                }
+                if(vehiculo instanceof V4x4 && (vehiculo.combustible == combustible || combustible == "Todos")){ tabla+=vehiculo.toHtmlRow();}
             });
         }
         else{
-            let tabla = "<table class='table'><thead class='thead-dark'><tr><th scope='col'>Matricula</th><th scope='col'>Marca</th><th scope='col'>Modelo</th><th scope='col'>Combustible</th><th>ABS</th><th>Descapotable</th><th>Nº Puertas</th><th>Pendiente Máxima</th></tr></thead><tbody>";
+            tabla += "<thead class='thead-dark'><tr><th scope='col'>Matricula</th><th scope='col'>Marca</th><th scope='col'>Modelo</th><th scope='col'>Combustible</th><th>ABS</th><th>Descapotable</th><th>Nº Puertas</th><th>Pendiente Máxima</th></tr></thead><tbody>";
             this.vehiculos.forEach( (vehiculo) => {
-                if(vehiculo.combustible == combustible || combustible == "todos"){
-                    tabla+=vehiculo.toHtmlRow();
-                }
+                if(vehiculo.combustible == combustible || combustible == "Todos"){ tabla+=this.todosLosDatosVehiculo(vehiculo);}
             });
         }
+        return tabla;
     }
-
+    todosLosDatosVehiculo(vehiculo){
+        let linea = "<tr><td>"+vehiculo.matricula+"</td><td>"+vehiculo.marca+"</td><td>"+vehiculo.modelo+"</td><td>"+vehiculo.combustible+"</td>";
+        if(vehiculo instanceof Turismo){
+           linea+= "<td>"+(vehiculo.abs?"Sí":"No")+"</td><td>"+(vehiculo.descapotable?"Sí":"No")+"</td><td>"+vehiculo.numPuertas+"</td><td>-</td></tr>";   
+        }
+        else{
+            linea += "<td>-</td><td>-</td><td>-</td><td>"+vehiculo.pendienteMax+"</td></tr>";   
+        }
+        return linea;
+    }
     listadoClientes() {
         this.clientes.sort(function(cliente,otroCliente)
         {
