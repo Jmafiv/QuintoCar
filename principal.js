@@ -171,13 +171,13 @@ function datosIniciales() {
     cliente = new Cliente("56743281R", "Adrián", "López", 954618295);
     quintocar.altaCliente(cliente);
 
-    var vehiculo = new Turismo("0583CXV","Seat","Ibiza", "Diesel","Si","Si",5);
+    var vehiculo = new Turismo("0583CXV","Seat","Ibiza", "Diesel",true,false,5);
     quintocar.altaVehiculo(vehiculo);
     var vehiculo = new V4x4("9588FFT", "Ford", "Fiesta", "Gasolina",15);
     quintocar.altaVehiculo(vehiculo);
-    var vehiculo = new Turismo("4231CAV","Renault","Megane", "Gasolina","Si","",3);
+    var vehiculo = new Turismo("4231CAV","Renault","Megane", "Gasolina",true,true,3);
     quintocar.altaVehiculo(vehiculo);
-    var vehiculo = new Turismo("5578FGA","Opel","Atra", "Diesel","","Si",5);
+    var vehiculo = new Turismo("5578FGA","Opel","Atra", "Diesel",false,true,5);
     quintocar.altaVehiculo(vehiculo);
     var vehiculo = new V4x4("2564DDF", "Renault", "Clio", "Diesel",5);
     quintocar.altaVehiculo(vehiculo); 
