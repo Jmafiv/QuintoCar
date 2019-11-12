@@ -2,7 +2,7 @@
 var quintocar = new QuintoCar();
 
 // Mensaje de si se ha añadido o no las cosas
-function mensaje(texto){ document.getElementById("mensaje").innerHTML = texto;}
+function mensaje(texto){ document.getElementById("mensaje").innerHTML = texto; $('#modalMensaje').modal('toggle')}
 
 /////////////////// Eventos de la página ///////////////////
 // Asignar a los elementos un evento (Evitando poner onclick en el html)
@@ -41,7 +41,6 @@ function mostrarSegunTipo(){ // Oculta los detalles según el tipo del vehículo
 
 /////////////////// Mostrar/Ocultar los formularios ///////////////////
 function ocultaCosas(array,menu){
-	mensaje("");
 	document.getElementById("mensaje").classList.add("oculta");
 
 	formulario.classList.remove("oculta");
@@ -76,7 +75,7 @@ function enviar(){ // Según lo que se muestra en pantalla se envia a un método
 			formulario.apellidos.value == "" ||
 			formulario.telefono.value == "")
 		{
-			document.getElementById("mensaje").innerHTML = "Rellene todos los campos obligatorios";
+			mensaje("Rellene todos los campos obligatorios");
 			break;
 		}
 		else
@@ -92,7 +91,7 @@ function enviar(){ // Según lo que se muestra en pantalla se envia a un método
 				formulario.modelo.value == "" ||
 				formulario.combustible.value == "")
 				{
-					document.getElementById("mensaje").innerHTML = "Rellene todos los campos obligatorios";
+					mensaje("Rellene todos los campos obligatorios");
 					break;
 				}
 			case "V4x4":
@@ -101,7 +100,7 @@ function enviar(){ // Según lo que se muestra en pantalla se envia a un método
 				formulario.modelo.value == "" ||
 				formulario.combustible.value == "")
 				{
-					document.getElementById("mensaje").innerHTML = "Rellene todos los campos obligatorios";
+					mensaje("Rellene todos los campos obligatorios");
 					break;
 				}
 			altaVehiculo();
@@ -113,7 +112,7 @@ function enviar(){ // Según lo que se muestra en pantalla se envia a un método
 		    formulario.importeCompra.value == "" ||
 		    formulario.fechaCompra.value == null)
 		{
-			document.getElementById("mensaje").innerHTML = "Rellene todos los campos obligatorios";
+			mensaje("Rellene todos los campos obligatorios");
 			break;
 		}
 		else
@@ -125,7 +124,7 @@ function enviar(){ // Según lo que se muestra en pantalla se envia a un método
 		    formulario.importeVenta.value == "" ||
 		    formulario.fechaVenta.value == null)
 		{
-			document.getElementById("mensaje").innerHTML = "Rellene todos los campos obligatorios";
+			mensaje("Rellene todos los campos obligatorios");
 			break;
 		}
 		else

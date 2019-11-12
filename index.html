@@ -203,8 +203,30 @@
 						</div>
 						<button id="enviar" name="enter" type="submit" class="btn btn-primary btn-block">Enviar</button>
 					</form>
-					<p id="mensaje" class="alert alert-info oculta"></p>
-					<!-- Modal -->
+
+					<!-- Mensaje -->
+					<div class="modal fade" id="modalMensaje" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
+						<div class="modal-dialog modal-dialog-centered" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title">Mensaje</h5>
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<form name="formFechas" onsubmit="return false">
+									<div class="modal-body">
+										<p id="mensaje">Ha ocurrido un error.</p>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-primary" name="verListado" data-dismiss="modal" aria-label="Close">Aceptar</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+					
+					
+					<!-- Periodo -->
 					<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
 						<div class="modal-dialog modal-dialog-centered" role="document">
 							<div class="modal-content">
@@ -254,7 +276,7 @@
 											<label class="col-4">Tipo</label>
 											<div class="col-8">
 												<div class="custom-control custom-radio custom-control-inline">
-													<input name="filtroTipo" id="turismo" type="radio" class="custom-control-input" value="turismo" required="required">
+													<input name="filtroTipo" id="turismo" type="radio" class="custom-control-input" value="Turismo" required="required">
 													<label for="turismo" class="custom-control-label">Turismo</label>
 												</div>
 												<div class="custom-control custom-radio custom-control-inline">
@@ -262,7 +284,7 @@
 													<label for="V4x4" class="custom-control-label">V4x4</label>
 												</div>
 												<div class="custom-control custom-radio custom-control-inline">
-													<input name="filtroTipo" id="todos" type="radio" required="required" class="custom-control-input" value="todos">
+													<input name="filtroTipo" id="todos" type="radio" required="required" class="custom-control-input" value="Todos">
 													<label for="todos" class="custom-control-label">Todos</label>
 												</div>
 											</div>
@@ -271,20 +293,20 @@
 											<label class="col-4">Combustible</label>
 											<div class="col-8">
 												<div class="custom-control custom-radio custom-control-inline">
-													<input name="filtroCombustible" id="gasolina" type="radio" class="custom-control-input" value="gasolina" required="required">
+													<input name="filtroCombustible" id="gasolina" type="radio" class="custom-control-input" value="Gasolina" required="required">
 													<label for="gasolina" class="custom-control-label">Gasolina</label>
 												</div>
 												<div class="custom-control custom-radio custom-control-inline">
-													<input name="filtroCombustible" id="diesel" type="radio" class="custom-control-input" value="diesel" required="required">
+													<input name="filtroCombustible" id="diesel" type="radio" class="custom-control-input" value="Diesel" required="required">
 													<label for="diesel" class="custom-control-label">Diesel</label>
 												</div>
 												<div class="custom-control custom-radio custom-control-inline">
-													<input name="filtroCombustible" id="biocombustible" type="radio" class="custom-control-input" value="biocombustible" required="required">
+													<input name="filtroCombustible" id="biocombustible" type="radio" class="custom-control-input" value="Biocombustible" required="required">
 													<label for="biocombustible" class="custom-control-label">Biocombustible</label>
 												</div>
 												<div class="custom-control custom-radio custom-control-inline">
-													<input name="filtroCombustible" id="todos" type="radio" required="required" class="custom-control-input" value="todos">
-													<label for="todos" class="custom-control-label">Todos</label>
+													<input name="filtroCombustible" id="todos2" type="radio" required="required" class="custom-control-input" value="Todos">
+													<label for="todos2" class="custom-control-label">Todos</label>
 												</div>
 											</div>
 										</div>
