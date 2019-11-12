@@ -214,6 +214,12 @@ class QuintoCar {
     listadoVendidosperiodo(fechaInicio, fechaFin) {
         // Cabecera de la tabla
         let tabla = "<div class='table-responsive'><table class='table'><thead class='thead-dark'><tr><th scope='col'>Matricula</th><th scope='col'>Marca</th><th scope='col'>Modelo</th><th scope='col'>Combustible</th><th>ABS</th><th>Descapotable</th><th>Nº Puertas</th><th>Pendiente Máxima</th><th>Fecha Compra</th><th>Importe Venta</th><th>Importe Compra</th><th>Fecha Venta</th><th>Beneficio</th></tr></thead><tbody>";
+        // Ordenación ascendente
+        this.ventas.sort(function(venta,otraVenta){
+            if (venta.fechaVenta > otraVenta.fechaVenta) {return 1;}
+            if (venta.fechaVenta < otraVenta.fechaVenta) {return -1;}
+            return 0;
+        });
         // Línea de cada venta
         this.ventas.forEach( (venta) => {
             let compraCoche = this.buscarCompra(venta.vehiculo); // Busca la compra del coche que se ha vendido
@@ -228,6 +234,12 @@ class QuintoCar {
     listadoCompradosperiodo(fechaInicio, fechaFin) {
         // Cabecera de la tabla
         let tabla = "<div class='table-responsive'><table class='table'><thead class='thead-dark'><tr><th scope='col'>Matricula</th><th scope='col'>Marca</th><th scope='col'>Modelo</th><th scope='col'>Combustible</th><th>ABS</th><th>Descapotable</th><th>Nº Puertas</th><th>Pendiente Máxima</th><th>Fecha Compra</th><th>Importe Venta</th><th>Importe Compra</th><th>Fecha Venta</th><th>Beneficio</th></tr></thead><tbody>";
+        // Ordenación descendente 
+        this.compras.sort(function(compra,otraCompra){
+            if (compra.fechacompra > otraCompra.fechaVenta) {return -1;}
+            if (compra.fechaVenta < otraCompra.fechaVenta) {return 1;}
+            return 0;
+        });
         // Línea de cada compra
         this.compras.forEach( (compra) => {
             if(compra.fechaCompra > fechaInicio && compra.fechaCompra < fechaFin){ // Comprueba si se compró en el periodo dado
