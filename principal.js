@@ -2,7 +2,7 @@
 var quintocar = new QuintoCar();
 
 // Mensaje de si se ha añadido o no las cosas
-function mensaje(texto){ document.getElementById("mensaje").innerHTML = texto;}
+function mensaje(texto){ document.getElementById("mensaje").innerHTML = texto; $('#modalMensaje').modal('toggle')}
 
 /////////////////// Eventos de la página ///////////////////
 // Asignar a los elementos un evento (Evitando poner onclick en el html)
@@ -41,7 +41,6 @@ function mostrarSegunTipo(){ // Oculta los detalles según el tipo del vehículo
 
 /////////////////// Mostrar/Ocultar los formularios ///////////////////
 function ocultaCosas(array,menu){
-	mensaje("");
 	document.getElementById("mensaje").classList.add("oculta");
 
 	formulario.classList.remove("oculta");
