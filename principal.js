@@ -27,11 +27,11 @@ function mostrarAltaVehiculo () {
 	mostrarSegunTipo();
 }
 function mostrarCompraVehiculo () {
-	opcion = "compraVehiculo";
+	opcion = "comprarVehiculo";
 	ocultaCosas(["F-altaCliente","F-altaVehiculo","T-comprarVehiculo","F-venderVehiculo"],true);
 }
 function mostrarVentaVehiculo () {
-	opcion = "ventaVehiculo";
+	opcion = "venderVehiculo";
 	ocultaCosas(["F-altaCliente","F-altaVehiculo","F-comprarVehiculo","T-venderVehiculo"],true);
 }
 function mostrarSegunTipo(){ // Oculta los detalles según el tipo del vehículo señalado
@@ -41,6 +41,7 @@ function mostrarSegunTipo(){ // Oculta los detalles según el tipo del vehículo
 
 /////////////////// Mostrar/Ocultar los formularios ///////////////////
 function ocultaCosas(array,menu){
+	formulario.classList.remove("was-validated");
 	formulario.classList.remove("oculta");
 	for (var i = 0; i < array.length; i++) {
 		if(array[i].substring(0,1)=="F"){ //Si no se tiene que mostrar:
@@ -66,6 +67,36 @@ function deshabilitaInputs(elemento,NoSi){
 eventoEn("enviar","click",enviar);
 
 function enviar(){ // Según lo que se muestra en pantalla se envia a un método o a otro
+	formulario.classList.remove("was-validated");
+	/*let error = false;
+	let elemento;
+	for(let i=0; i < document.getElementById(opcion).getElementsByTagName('input').length;i++){
+		elemento = document.getElementById(opcion).getElementsByTagName('input')[i];
+		if(elemento.value == ""){
+			error = true;
+			mensajeErrorDebajo(elemento,"No puede estar vacío");
+		}
+	}
+	if(error){
+		mensaje("Rellene todos los campos obligatorios");
+	}
+	else{
+		switch (opcion) {
+			case "altaCliente":
+				altaCliente();
+				break;
+			case "altaVehiculo":
+				altaVehiculo();
+				break;
+			case "compraVehiculo":
+				compraVehiculo();
+				break;
+			case "ventaVehiculo":
+				ventaVehiculo();
+				break;
+		}
+	}*/
+
 	switch (opcion) {
 		case "altaCliente":
 		if (formulario.nif.value == "" ||
@@ -129,7 +160,7 @@ function enviar(){ // Según lo que se muestra en pantalla se envia a un método
 			ventaVehiculo();
 			break;
 	}
-	document.getElementById("mensaje").classList.remove("oculta");
+
 }
 
 function altaCliente(){
@@ -199,7 +230,7 @@ function abreListadoPestaña(listado,titulo){
 
 function mensajeErrorDebajo(elemento,mensaje){
 	elemento.parentElement.getElementsByClassName("invalid-feedback")[0].innerHTML = mensaje;
-	// formulario.classList.add("was-validated"); // ejemplo
+	formulario.classList.add("was-validated");
 }
 
 ///////////////// Datos Iniciales /////////////////
