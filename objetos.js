@@ -221,7 +221,7 @@ class QuintoCar {
                     tabla+="<td>"+(venta.vehiculo.abs?"Sí":"No")+"</td><td>"+(venta.vehiculo.descapotable?"Sí":"No")+"</td><td>"+venta.vehiculo.numPuertas+"</td><td>-</td>";
                 }
                 else{ // Deja vacías las celdas que no son de su tipo
-                    tabla+="<td></td><td></td><td></td><td>"+venta.vehiculo.pendienteMax+"</td>";
+                    tabla+="<td>-</td><td>-</td><td>-</td><td>"+venta.vehiculo.pendienteMax+"</td>";
                 }
                 tabla+="<td>"+compraCoche.fechaCompra.toLocaleDateString()+"</td><td>"+venta.fechaVenta.toLocaleDateString()+"</td><td>"+compraCoche.importe+"</td><td>"+venta.importe+"</td><td>"+(venta.importe - compraCoche.importe)+"</td></tr>";
            }
@@ -234,8 +234,31 @@ class QuintoCar {
         return "listadoComprasperiodo";
     }
 
-    listadoVehiculos() {
-        return table;
+    listadoVehiculos(tipo,combustible) {
+        if(tipo=="turismo"){
+            let tabla = "<table class='table'><thead class='thead-dark'><tr><th scope='col'>Matricula</th><th scope='col'>Marca</th><th scope='col'>Modelo</th><th scope='col'>Combustible</th><th>ABS</th><th>Descapotable</th><th>Nº Puertas</th></tr></thead><tbody>";
+            this.vehiculos.forEach( (vehiculo) => {
+                if(vehiculo instanceof Turismo && (vehiculo.combustible == combustible  || combustible == "todos")){
+                    tabla+=vehiculo.toHtmlRow();
+                }
+            });
+        }
+        else if(tipo=="V4x4"){
+            let tabla = "<table class='table'><thead class='thead-dark'><tr><th scope='col'>Matricula</th><th scope='col'>Marca</th><th scope='col'>Modelo</th><th scope='col'>Combustible</th><th>Pendiente Máxima</th></thead><tbody>";
+            this.vehiculos.forEach( (vehiculo) => {
+                if(vehiculo instanceof V4x4 && (vehiculo.combustible == combustible || combustible == "todos")){
+                    tabla+=vehiculo.toHtmlRow();
+                }
+            });
+        }
+        else{
+            let tabla = "<table class='table'><thead class='thead-dark'><tr><th scope='col'>Matricula</th><th scope='col'>Marca</th><th scope='col'>Modelo</th><th scope='col'>Combustible</th><th>ABS</th><th>Descapotable</th><th>Nº Puertas</th><th>Pendiente Máxima</th></tr></thead><tbody>";
+            this.vehiculos.forEach( (vehiculo) => {
+                if(vehiculo.combustible == combustible || combustible == "todos"){
+                    tabla+=vehiculo.toHtmlRow();
+                }
+            });
+        }
     }
 
     listadoClientes() {
