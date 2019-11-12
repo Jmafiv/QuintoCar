@@ -193,9 +193,17 @@ class QuintoCar {
 
     listadoALaVenta() {
 
-        let tabla = "<table class='table'><thead class='thead-dark'><tr><th scope='col'>Matrícula</th><th scope='col'>Marca</th><th scope='col'>Modelo</th><th scope='col'>Combustible</th></tr></thead><tbody>";
+        let tabla = "<table class='table'><thead class='thead-dark'><tr><th scope='col'>Matricula</th><th scope='col'>Marca</th><th scope='col'>Modelo</th><th scope='col'>Combustible</th><th>ABS</th><th>Descapotable</th><th>Nº Puertas</th><th>Pendiente Máxima</th></tr></thead><tbody>";
         this.vehiculos.forEach( function(vehiculo) {
-            tabla+=vehiculo.toHtmlRow();
+           tabla += "<tr><td scope='col'>"+vehiculo.matricula+"</td><td scope='col'>"+vehiculo.marca+"</td><td scope='col'>"+vehiculo.modelo+"</td><td scope='col'>"+vehiculo.combustible+"</td>";
+           if(vehiculo instanceof Turismo)
+           {
+            tabla+="<td>"+(vehiculo.abs?"Sí":"No")+"</td><td>"+(vehiculo.descapotable?"Sí":"No")+"</td><td>"+vehiculo.numPuertas+"</td><td></td>";
+           }
+           else
+           {
+            tabla+="<td></td><td></td><td></td><td>"+vehiculo.pendienteMax+"</td>";
+           }
         });
         tabla += "</tbody></table>";
         return tabla;
