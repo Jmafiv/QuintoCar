@@ -174,12 +174,12 @@ let btnModal; // Define si al introducir las fechas va a un listado u otro
 eventoEn("clickLVehiculoVenta","click",clickLVehiculoVenta);
 eventoEn("clickLVendidos","click",clickLVendidos);
 eventoEn("clickLComprados","click",clickLComprados);
-eventoEn("clickLVehiculos","click",clickLVehiculos);
 eventoEn("clickLClientes","click",clickLClientes);	
+eventoEn("verConFiltros","click",clickLVehiculos);
 eventoEn("verListado","click",botonModal);	
 
 function clickLVehiculoVenta(){ abreListadoPestaña(quintocar.listadoALaVenta(),"Vehículos en venta"); }
-function clickLVehiculos(){	abreListadoPestaña("Listado vehículos","Vehículos"); }
+function clickLVehiculos(){abreListadoPestaña(quintocar.listadoVehiculos(formfiltros.filtroTipo.value,formfiltros.filtroCombustible.value),"Vehículos");}
 function clickLClientes(){ abreListadoPestaña(quintocar.listadoClientes(),"Clientes"); }
 function clickLVendidos(){ btnModal = "vendidos"; }
 function clickLComprados(){ btnModal = "comprados"; }
