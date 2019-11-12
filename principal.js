@@ -2,7 +2,7 @@
 var quintocar = new QuintoCar();
 
 // Mensaje de si se ha añadido o no las cosas
-function mensaje(texto){ document.getElementById("mensaje").innerHTML = texto; $('#modalMensaje').modal('toggle')}
+function mensaje(texto){ document.getElementById("mensaje").innerHTML = texto; $('#modalMensaje').modal('toggle');}
 
 /////////////////// Eventos de la página ///////////////////
 // Asignar a los elementos un evento (Evitando poner onclick en el html)
@@ -68,7 +68,7 @@ eventoEn("enviar","click",enviar);
 
 function enviar(){ // Según lo que se muestra en pantalla se envia a un método o a otro
 	formulario.classList.remove("was-validated");
-	/*let error = false;
+	let error = false;
 	let elemento;
 	for(let i=0; i < document.getElementById(opcion).getElementsByTagName('input').length;i++){
 		elemento = document.getElementById(opcion).getElementsByTagName('input')[i];
@@ -95,72 +95,7 @@ function enviar(){ // Según lo que se muestra en pantalla se envia a un método
 				ventaVehiculo();
 				break;
 		}
-	}*/
-
-	switch (opcion) {
-		case "altaCliente":
-		if (formulario.nif.value == "" ||
-			formulario.nombre.value == "" ||
-			formulario.apellidos.value == "" ||
-			formulario.telefono.value == "")
-		{
-			mensaje("Rellene todos los campos obligatorios");
-			break;
-		}
-		else
-			altaCliente();
-			break;
-		case "altaVehiculo":
-		let tipo = formulario.tipo.value;
-		switch (tipo)
-		{
-			case "Turismo":
-				if (formulario.matricula.value == "" ||
-				formulario.marca.value == "" ||
-				formulario.modelo.value == "" ||
-				formulario.combustible.value == "")
-				{
-					mensaje("Rellene todos los campos obligatorios");
-					break;
-				}
-			case "V4x4":
-				if (formulario.matricula.value == "" ||
-				formulario.marca.value == "" ||
-				formulario.modelo.value == "" ||
-				formulario.combustible.value == "")
-				{
-					mensaje("Rellene todos los campos obligatorios");
-					break;
-				}
-			altaVehiculo();
-		}
-			break;
-		case "compraVehiculo":
-		if (formulario.clienteCompra.value == "" ||
-		    formulario.vehiculoCompra.value == "" ||
-		    formulario.importeCompra.value == "" ||
-		    formulario.fechaCompra.value == null)
-		{
-			mensaje("Rellene todos los campos obligatorios");
-			break;
-		}
-		else
-			compraVehiculo();
-			break;
-		case "ventaVehiculo":
-		if (formulario.clienteVenta.value == "" ||
-		    formulario.vehiculoVenta.value == "" ||
-		    formulario.importeVenta.value == "" ||
-		    formulario.fechaVenta.value == null)
-		{
-			mensaje("Rellene todos los campos obligatorios");
-			break;
-		}
-		else
-			ventaVehiculo();
-			break;
 	}
-
 }
 
 function altaCliente(){

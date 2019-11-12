@@ -4,10 +4,17 @@
 		<title>QuintoCar</title>
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-		<style type="text/css">
+		<style>
 		.oculta{
 		display: none;
 		}
+		.container{
+		background: #ffffff;
+		box-shadow: 0 0 2px;
+		padding: 0.5em 2em 2em;
+		border-radius: 4px;
+		}
+		body{background-color: var(--cyan);}
 		</style>
 	</head>
 	<body onload="mostrarAltaCliente(), datosIniciales()">
@@ -203,7 +210,6 @@
 						</div>
 						<button id="enviar" name="enter" type="submit" class="btn btn-primary btn-block">Enviar</button>
 					</form>
-
 					<!-- Mensaje -->
 					<div class="modal fade" id="modalMensaje" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
 						<div class="modal-dialog modal-dialog-centered" role="document">
@@ -214,18 +220,17 @@
 									<span aria-hidden="true">&times;</span>
 									</button>
 								</div>
-								<form name="formFechas" onsubmit="return false">
+								<form name="formError" onsubmit="return false">
 									<div class="modal-body">
 										<p id="mensaje">Ha ocurrido un error.</p>
+									</div>
 									<div class="modal-footer">
-										<button type="button" class="btn btn-primary" name="verListado" data-dismiss="modal" aria-label="Close">Aceptar</button>
+										<button type="button" class="btn btn-primary" name="ok" data-dismiss="modal" aria-label="Close">Aceptar</button>
 									</div>
 								</form>
 							</div>
 						</div>
 					</div>
-					
-					
 					<!-- Periodo -->
 					<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
 						<div class="modal-dialog modal-dialog-centered" role="document">
