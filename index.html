@@ -161,22 +161,25 @@
 							<div class="form-group row">
 								<label for="vehiculoCompra" class="col-4 col-form-label">Vehículo</label>
 								<div class="col-8">
-									<input name="vehiculoCompra" type="text" class="form-control" required>
-									<div class="invalid-feedback"></div>
+									<input name="vehiculoCompra" type="text" pattern="[0-9]{4}[A-Za-z]{3}" class="form-control" required>
+									<div class="invalid-feedback">Campo requerido. Debe ser la matrícula siguiendo el formato (0000AAA)</div>
 								</div>
 							</div>
 							<div class="form-group row">
 								<label for="importeCompra" class="col-4 col-form-label">Importe</label>
-								<div class="col-8">
-									<input name="importeCompra" type="text" class="form-control" required>
-									<div class="invalid-feedback"></div>
+								<div class="input-group col-8">
+									<input name="importeCompra" type="number" min="100" step="any" class="form-control" required>
+									<div class="input-group-append">
+								      <div class="input-group-text">€</div>
+								    </div>
+									<div class="invalid-feedback">Campo requerido. Debe ser un importe válido</div>
 								</div>
 							</div>
 							<div class="form-group row">
 								<label for="fechaCompra" class="col-4 col-form-label">Fecha</label>
 								<div class="col-8">
 									<input name="fechaCompra" type="date" class="form-control" required>
-									<div class="invalid-feedback"></div>
+									<div class="invalid-feedback">Campo requerido. Debe ser una fecha válida</div>
 								</div>
 							</div>
 						</div>
@@ -192,22 +195,25 @@
 							<div class="form-group row">
 								<label for="vehiculoVenta" class="col-4 col-form-label">Vehículo</label>
 								<div class="col-8">
-									<input name="vehiculoVenta" type="text" class="form-control" required>
-									<div class="invalid-feedback"></div>
+									<input name="vehiculoVenta" type="text" pattern="[0-9]{4}[A-Za-z]{3}" class="form-control" required>
+									<div class="invalid-feedback">Campo requerido. Debe ser la matrícula siguiendo el formato (0000AAA)</div>
 								</div>
 							</div>
 							<div class="form-group row">
 								<label for="importeVenta" class="col-4 col-form-label">Importe</label>
-								<div class="col-8">
-									<input name="importeVenta" type="text" class="form-control" required>
-									<div class="invalid-feedback"></div>
+								<div class="input-group col-8">
+									<input name="importeVenta" type="number" min="100" step="any" class="form-control" required>
+									<div class="input-group-append">
+								      <div class="input-group-text">€</div>
+								    </div>
+									<div class="invalid-feedback">Campo requerido. Debe ser un importe válido</div>
 								</div>
 							</div>
 							<div class="form-group row">
 								<label for="fechaVenta" class="col-4 col-form-label">Fecha</label>
 								<div class="col-8">
 									<input name="fechaVenta" type="date" class="form-control" required>
-									<div class="invalid-feedback"></div>
+									<div class="invalid-feedback">Campo requerido. Debe ser una fecha válida</div>
 								</div>
 							</div>
 						</div>
