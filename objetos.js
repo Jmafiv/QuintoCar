@@ -303,8 +303,8 @@ class QuintoCar {
         let tabla = "<div class='table-responsive'><table class='table'><thead class='thead-dark'><tr><th scope='col'>Matricula</th><th scope='col'>Marca</th><th scope='col'>Modelo</th><th scope='col'>Combustible</th><th scope='col'>ABS</th><th scope='col'>Descapotable</th><th scope='col'>Nº Puertas</th><th scope='col'>Pendiente Máxima</th><th scope='col'>Fecha Compra</th><th scope='col'>Importe Compra</th><th scope='col'>NIF</th><th scope='col'>Nombre</th></tr></thead><tbody>";
         // Ordenación descendente 
         this.compras.sort((compra,otraCompra) =>{
-            if (compra.fechaVenta > otraCompra.fechaVenta) return -1;
-          if (compra.fechaVenta < otraCompra.fechaVenta) return 1;
+            if (compra.fechaCompra > otraCompra.fechaCompra) return -1;
+          if (compra.fechaCompra < otraCompra.fechaCompra) return 1;
           return 0;
         });
         // Línea de cada compra
