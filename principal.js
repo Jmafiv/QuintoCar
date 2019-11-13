@@ -206,12 +206,11 @@ function datosIniciales() {
     quintocar.altaVehiculo(vehiculo); 
    
    // Compras
-   /*quintocar.comprar("9588FFT","12345678A","25000",new Date("2019-8-15"));
+   quintocar.comprar("9588FFT","12345678A","25000",new Date("2019-8-15"));
    quintocar.comprar("4231CAV","23456789B","18000",new Date("2019-9-25"));
-   quintocar.comprar("1238RTV","56743281R","11000",new Date("2019-9-30"));*/
+   quintocar.comprar("1238RTV","56743281R","11000",new Date("2019-9-30"));
 
    // Ventas
    /*quintocar.comprar("9588FFT","12323434W","30000",new Date("2019-9-10"));
-   quintocar.comprar("4231CAV","12121212C","20000",new Date("2019-10-2"));
-   quintocar.comprar("1238RTV","23456789B","15000",new Date("2019-11-16"));*/
+   quintocar.comprar("4231CAV","12121212C","20000",new Date("2019-10-2"));*/
 }
