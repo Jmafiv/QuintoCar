@@ -257,7 +257,7 @@ class QuintoCar {
     }
 
     listadoALaVenta() {
-        let tabla = "<table class='table'><thead class='thead-dark'><tr><th scope='col'>Matricula</th><th scope='col'>Marca</th><th scope='col'>Modelo</th><th scope='col'>Combustible</th><th>ABS</th><th>Descapotable</th><th>Nº Puertas</th><th>Pendiente Máxima</th></tr></thead><tbody>";
+        let tabla = "<table class='table'><thead class='thead-dark'><tr><th scope='col'>Matricula</th><th scope='col'>Marca</th><th scope='col'>Modelo</th><th scope='col'>Combustible</th><th scope='col'>ABS</th><th scope='col'>Descapotable</th><th scope='col'>Nº Puertas</th><th scope='col'>Pendiente Máxima</th></tr></thead><tbody>";
         this.compras.forEach( (compra) => {
            tabla += this.todosLosDatosVehiculo(compra.vehiculo);
         });
@@ -267,7 +267,7 @@ class QuintoCar {
 
     listadoVendidosperiodo(fechaInicio, fechaFin) {
         // Cabecera de la tabla
-        let tabla = "<div class='table-responsive'><table class='table'><thead class='thead-dark'><tr><th scope='col'>Matricula</th><th scope='col'>Marca</th><th scope='col'>Modelo</th><th scope='col'>Combustible</th><th>ABS</th><th>Descapotable</th><th>Nº Puertas</th><th>Pendiente Máxima</th><th>Fecha Compra</th><th>Importe Venta</th><th>Importe Compra</th><th>Fecha Venta</th><th>Beneficio</th></tr></thead><tbody>";
+        let tabla = "<div class='table-responsive'><table class='table'><thead class='thead-dark'><tr><th scope='col'>Matricula</th><th scope='col'>Marca</th><th scope='col'>Modelo</th><th scope='col'>Combustible</th><th scope='col'>ABS</th><th scope='col'>Descapotable</th><th scope='col'>Nº Puertas</th><th scope='col'>Pendiente Máxima</th><th scope='col'>Fecha Compra</th><th scope='col'>Importe Venta</th><th scope='col'>Importe Compra</th><th scope='col'>Fecha Venta</th><th scope='col'>Beneficio</th></tr></thead><tbody>";
         // Ordenación ascendente
         this.ventas.sort(function(venta,otraVenta){
             if (venta.fechaVenta > otraVenta.fechaVenta) {return 1;}
@@ -287,7 +287,7 @@ class QuintoCar {
     }
     listadoCompradosperiodo(fechaInicio, fechaFin) {
         // Cabecera de la tabla
-        let tabla = "<div class='table-responsive'><table class='table'><thead class='thead-dark'><tr><th scope='col'>Matricula</th><th scope='col'>Marca</th><th scope='col'>Modelo</th><th scope='col'>Combustible</th><th>ABS</th><th>Descapotable</th><th>Nº Puertas</th><th>Pendiente Máxima</th><th>Fecha Compra</th><th>Importe Venta</th><th>Importe Compra</th><th>Fecha Venta</th><th>Beneficio</th></tr></thead><tbody>";
+        let tabla = "<div class='table-responsive'><table class='table'><thead class='thead-dark'><tr><th scope='col'>Matricula</th><th scope='col'>Marca</th><th scope='col'>Modelo</th><th scope='col'>Combustible</th><th scope='col'>ABS</th><th scope='col'>Descapotable</th><th scope='col'>Nº Puertas</th><th scope='col'>Pendiente Máxima</th><th scope='col'>Fecha Compra</th><th scope='col'>Importe Compra</th><th scope='col'>Importe Compra</th><th scope='col'>NIF</th><th scope='col'>Nombre</th></tr></thead><tbody>";
         // Ordenación descendente 
         this.compras.sort(function(compra,otraCompra){
             if (compra.fechacompra > otraCompra.fechaVenta) {return -1;}
@@ -298,11 +298,13 @@ class QuintoCar {
         this.compras.forEach( (compra) => {
             if(compra.fechaCompra > fechaInicio && compra.fechaCompra < fechaFin){ // Comprueba si se compró en el periodo dado
                 tabla += this.todosLosDatosVehiculo(compra.vehiculo).substring(0,-5);
-                tabla +="<td>"+compraCoche.fechaCompra.toLocaleDateString()+"</td><td>"+compra.fechaCompra.toLocaleDateString()+"</td><td>"+compraCoche.importe+"</td><td>"+venta.importe+"</td><td>"+(venta.importe - compraCoche.importe)+"</td></tr>";
+                console.log(compra.vehiculo);
+                tabla += "<td>"+compra.fechaCompra.toLocaleDateString()+"</td><td>"+compra.importe+"</td><td>"+compra.cliente.nif+"</td><td>"+compra.cliente.nombre+"</td></tr>";
            }
         });
         tabla += "</tbody></table></div>";
-        return tabla;    }
+        return tabla;
+    }
 
     listadoVehiculos(tipo,combustible) {
         let tabla = "";
@@ -320,7 +322,7 @@ class QuintoCar {
             });
         }
         else{
-            tabla += "<thead class='thead-dark'><tr><th scope='col'>Matricula</th><th scope='col'>Marca</th><th scope='col'>Modelo</th><th scope='col'>Combustible</th><th>ABS</th><th>Descapotable</th><th>Nº Puertas</th><th>Pendiente Máxima</th></tr></thead><tbody>";
+            tabla += "<thead class='thead-dark'><tr><th scope='col'>Matricula</th><th scope='col'>Marca</th><th scope='col'>Modelo</th><th scope='col'>Combustible</th><th scope='col'>ABS</th><th scope='col'>Descapotable</th><th scope='col'>Nº Puertas</th><th scope='col'>Pendiente Máxima</th></tr></thead><tbody>";
             this.vehiculos.forEach( (vehiculo) => {
                 if(vehiculo.combustible == combustible || combustible == "Todos"){ tabla+=this.todosLosDatosVehiculo(vehiculo);}
             });
