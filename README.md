@@ -21,7 +21,7 @@ Aquí se definen los métodos que trabajan como intermediarios entre la interfaz
 
 #### Envío de formularios:
 ---
-* **enviar()** - Función que realiza el botón enviar y, según que apartado se muestra, realiza una función u otra.
+* **enviar()** - Función que realiza el botón enviar, valida los datos introducidos y si son correctos ejecuta el método correspondiente.
 * **altaCliente()** - Recoge los datos del formulario e introduce el cliente en la base de datos.
 * **altaVehiculo()** - Recoge los datos del formulario e introduce el vehículo en la base de datos.
 * **compraVehiculo()** - Recoge los datos del formulario e introduce la compra en la base de datos.
@@ -36,10 +36,6 @@ Aquí se definen los métodos que trabajan como intermediarios entre la interfaz
 * **clickLVendidos()** - Al hacer clic en el menú, guarda que ha sido pulsado.
 * **clickLComprados()**  - Al hacer clic en el menú, guarda que ha sido pulsado.
 * **botonModal()** - Según el clic dado en el menú, señala un modal para introducir un periodo y muestra el listado correspondiente.
-
-#### Validaciones: 
----
-* **mensajeErrorDebajo(elemento,mensaje)** - Muestra un mensaje bajo el input del formulario erróneo.
 
 ### objetos.js
 Aquí se declaran las clases y sus métodos.
