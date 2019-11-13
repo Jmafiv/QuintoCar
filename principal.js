@@ -126,8 +126,20 @@ function altaVehiculo(){
 }
 function compraVehiculo(){
 	// (new Date(form.fechaCita.value)).toLocaleDateString(); // Para pasar de YYYY-MM-DD a DD/MM/YYYY los formularios "date"
+	let nif = formulario.clienteCompra.value;
+	let matricula = formulario.vehiculoCompra.value;
+	let importe = parseFloat(formulario.importeCompra.value);
+	let fecha = new Date(formulario.fechaCompra.value).toLocaleDateString();
+
+	mensaje(quintocar.comprar(matricula, nif, importe, fecha));
 }
 function ventaVehiculo(){
+	let nif = formulario.clienteVenta.value;
+	let matricula = formulario.vehiculoVenta.value;
+	let importe = parseFloat(formulario.importeVenta.value);
+	let fecha = new Date(formulario.fechaVenta.value).toLocaleDateString();
+
+	mensaje(quintocar.vender(matricula, nif, importe, fecha));
 }
 
 /////////////////// Listados ///////////////////

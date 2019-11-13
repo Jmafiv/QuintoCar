@@ -184,13 +184,65 @@ class QuintoCar {
     }
 
     comprar(matricula, nif, importe, fecha) {
-    	
+        let mensaje;
+    	let vehiculo = this.vehiculos.forEach(compara);
+        let cliente = buscarCliente(nif);
+        function compara(vehiculo, index) {
+            if (vehiculo.matricula == matricula) {
+                return vehiculo;
+            }
+        }
+        if(vehiculo == undefined)
+        {
+            mensaje = "Ese vehículo no está registrado\n";
+        }
+        if(cliente == undefined)
+        {
+            mensaje += "No se ha encontrado el cliente\n";
+        }
+        if(buscarCompra(vehiculo) != undefined)
+        {
+            mensaje += "Ese vehículo se ha comprado ya\n";
+        }
+        if (buscarVenta(vehiculo) != undefined)
+        {
+            mensaje += "Ese vehículo se ha vendido ya\n";
+        }
 
-        return String;
+        let compra = new Compra(cliente,vehiculo,importe,fecha);
+        this.compras.push(compra);
+        return mensaje;
     }
 
     vender(matricula, nif, importe, fecha) {
-        return String;
+        let mensaje;
+        let vehiculo = this.vehiculos.forEach(compara);
+        let cliente = buscarCliente(nif);
+        function compara(vehiculo, index) {
+            if (vehiculo.matricula == matricula) {
+                return vehiculo;
+            }
+        }
+        if(vehiculo == undefined)
+        {
+            mensaje = "Ese vehículo no está registrado\n";
+        }
+        if(cliente == undefined)
+        {
+            mensaje += "No se ha encontrado el cliente\n";
+        }
+        if(buscarCompra(vehiculo) != undefined)
+        {
+            mensaje += "Ese vehículo se ha comprado ya\n";
+        }
+        if (buscarVenta(vehiculo) != undefined)
+        {
+            mensaje += "Ese vehículo se ha vendido ya\n";
+        }
+
+        let venta = new Venta(cliente,vehiculo,importe,fecha);
+        this.ventas.push(venta);
+        return mensaje;
     }
 
     listadoALaVenta() {
