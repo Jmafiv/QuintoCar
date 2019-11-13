@@ -63,24 +63,26 @@ function deshabilitaInputs(elemento,NoSi){
 	}
 }
 
-/////////////////// Botón Enviar Y Validación///////////////////
+/////////////////// Botón Enviar y Validación///////////////////
 eventoEn("enviar","click",enviar);
 
-function enviar(){ // Según lo que se muestra en pantalla se envia a un método o a otro
+function enviar(){ 
 	formulario.classList.remove("was-validated");
 	let error = false;
 	let elemento;
+	// Valida si los datos no están vacíos y son correctos
 	for(let i=0; i < document.getElementById(opcion).getElementsByTagName('input').length;i++){
 		elemento = document.getElementById(opcion).getElementsByTagName('input')[i];
-		if(elemento.value == ""){
+		if(elemento.value == "" || formulario.querySelectorAll(":invalid").length!=0){
 			error = true;
-			mensajeErrorDebajo(elemento,"Este campo no puede estar vacío.");
+			formulario.classList.add("was-validated");
 		}
 	}
 	if(error){
-		mensaje("Rellene todos los campos obligatorios");
+		mensaje("Rellene todos los campos obligatorios correctamente");
 	}
-	else{
+	else{// Según lo que se muestra en pantalla se envia a un método o a otro
+		formulario.classList.remove("was-validated");
 		switch (opcion) {
 			case "altaCliente":
 				altaCliente();
@@ -159,13 +161,6 @@ function abreListadoPestaña(listado,titulo){
 	pestañaListados.document.head.innerHTML = '<meta charset="utf-8"><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"><title>'+titulo+'</title>';
 	pestañaListados.document.body.innerHTML = listado;
 	pestañaListados.focus();
-}
-
-/////////////////// Validaciones /////////////////
-
-function mensajeErrorDebajo(elemento,mensaje){
-	elemento.parentElement.getElementsByClassName("invalid-feedback")[0].innerHTML = mensaje;
-	formulario.classList.add("was-validated");
 }
 
 ///////////////// Datos Iniciales /////////////////

@@ -58,29 +58,29 @@
 							<div class="form-group row">
 								<label for="nif" class="col-4 col-form-label">NIF</label>
 								<div class="col-8">
-									<input name="nif" type="text" class="form-control" required>
-									<div class="invalid-feedback"></div>
+									<input name="nif" type="text" pattern="[0-9]{8}[A-Za-z]" class="form-control" required>
+									<div class="invalid-feedback">Campo requerido. El nif sigue el formato (00000000A)</div>
 								</div>
 							</div>
 							<div class="form-group row">
 								<label for="nombre" class="col-4 col-form-label">Nombre</label>
 								<div class="col-8">
-									<input name="nombre" type="text" class="form-control" required>
-									<div class="invalid-feedback"></div>
+									<input name="nombre" type="text" pattern="[A-Za-z]+" class="form-control" required>
+									<div class="invalid-feedback">Campo requerido. Solo puede contener carácteres alfabéticos</div>
 								</div>
 							</div>	
 							<div class="form-group row">
 								<label for="apellidos" class="col-4 col-form-label">Apellidos</label>
 								<div class="col-8">
-									<input name="apellidos" type="text" class="form-control" required>
-									<div class="invalid-feedback"></div>
+									<input name="apellidos" type="text" pattern="[A-Za-z]+" class="form-control" required>
+									<div class="invalid-feedback">Campo requerido. Solo puede contener carácteres alfabéticos</div>
 								</div>
 							</div>
 							<div class="form-group row">
 								<label for="telefono" class="col-4 col-form-label">Teléfono</label>
 								<div class="col-8">
-									<input name="telefono" type="text" class="form-control" required>
-									<div class="invalid-feedback"></div>
+									<input name="telefono" type="tel" pattern="[0-9]{9}" class="form-control" required>
+									<div class="invalid-feedback">Campo requerido. Solo puede contener carácteres numéricos</div>
 								</div>
 							</div>
 						</div>
@@ -89,22 +89,22 @@
 							<div class="form-group row">
 								<label for="matricula" class="col-4 col-form-label">Matrícula</label>
 								<div class="col-8">
-									<input name="matricula" type="text" class="form-control" required>
-									<div class="invalid-feedback"></div>
+									<input name="matricula" type="text" pattern="[0-9]{4}[A-Za-z]{3}" class="form-control" required>
+									<div class="invalid-feedback">Campo requerido. La matrícula sigue el formato (0000AAA)</div>
 								</div>
 							</div>
 							<div class="form-group row">
 								<label for="marca" class="col-4 col-form-label">Marca</label>
 								<div class="col-8">
 									<input name="marca" type="text" class="form-control" required>
-									<div class="invalid-feedback"></div>
+									<div class="invalid-feedback">Campo requerido.</div>
 								</div>
 							</div>
 							<div class="form-group row">
 								<label for="modelo" class="col-4 col-form-label">Modelo</label>
 								<div class="col-8">
 									<input name="modelo" type="text" class="form-control" required>
-									<div class="invalid-feedback"></div>
+									<div class="invalid-feedback">Campo requerido.</div>
 								</div>
 							</div>
 							<div class="form-group row">
@@ -115,7 +115,6 @@
 										<option>Diesel</option>
 										<option>Biocombustible</option>
 									</select>
-									<div class="invalid-feedback"></div>
 								</div>
 							</div>
 							<div class="form-group row">
@@ -138,14 +137,14 @@
 									<label for="numPuertas" class="col-3 col-form-label">Nº Puertas</label>
 									<div class="col-6">
 										<input name="numPuertas" type="number" min="1" value="1" class="form-control" required>
-										<div class="invalid-feedback"></div>
+										<div class="invalid-feedback">Campo requerido.</div>
 									</div>
 								</div>
 								<div id="pendiente" class="form-check form-check-inline oculta">
 									<label for="pendiente" class="col-3 col-form-label">Pendiente Máxima</label>
 									<div class="col-6">
 										<input name="pendiente" type="number" min="0" value="0" class="form-control" required disabled>
-										<div class="invalid-feedback"></div>
+										<div class="invalid-feedback">Campo requerido.</div>
 									</div>
 								</div>
 							</div>
@@ -155,8 +154,8 @@
 							<div class="form-group row">
 								<label for="clienteCompra" class="col-4 col-form-label">Cliente</label>
 								<div class="col-8">
-									<input name="clienteCompra" type="text" class="form-control" required>
-									<div class="invalid-feedback"></div>
+									<input name="clienteCompra" type="text" pattern="[0-9]{8}[A-Za-z]" class="form-control" required>
+									<div class="invalid-feedback">Campo requerido. Debe ser el nif siguiendo el formato (00000000A)</div>
 								</div>
 							</div>
 							<div class="form-group row">
@@ -187,7 +186,7 @@
 								<label for="clienteVenta" class="col-4 col-form-label">Cliente</label>
 								<div class="col-8">
 									<input name="clienteVenta" type="text" class="form-control" required>
-									<div class="invalid-feedback"></div>
+									<div class="invalid-feedback">Campo requerido. Debe ser el nif siguiendo el formato (00000000A)</div>
 								</div>
 							</div>
 							<div class="form-group row">
