@@ -166,8 +166,8 @@ function abreListadoPestaña(listado,titulo){
 ///////////////// Datos Iniciales /////////////////
 
 function datosIniciales() {
-
-    var cliente = new Cliente("12345678A", "Lucas", "Martínez", 954121512);
+	// Clientes
+    let cliente = new Cliente("12345678A", "Lucas", "Martínez", 954121512);
     quintocar.altaCliente(cliente);
     cliente = new Cliente("23456789B", "Sandra", "Rodríguez", 692477512);
     quintocar.altaCliente(cliente);
@@ -178,16 +178,29 @@ function datosIniciales() {
     cliente = new Cliente("56743281R", "Adrián", "López", 954618295);
     quintocar.altaCliente(cliente);
 
-    var vehiculo = new Turismo("0583CXV","Seat","Ibiza", "Diesel",true,false,5);
+    // Vehículos
+    let vehiculo = new Turismo("0583CXV","Seat","Ibiza", "Diesel",true,false,5);
     quintocar.altaVehiculo(vehiculo);
-    var vehiculo = new V4x4("9588FFT", "Ford", "Fiesta", "Gasolina",15);
+    vehiculo = new V4x4("9588FFT", "Ford", "Fiesta", "Gasolina",15);
     quintocar.altaVehiculo(vehiculo);
-    var vehiculo = new Turismo("4231CAV","Renault","Megane", "Gasolina",true,true,3);
+    vehiculo = new Turismo("4231CAV","Renault","Megane", "Gasolina",true,true,3);
     quintocar.altaVehiculo(vehiculo);
-    var vehiculo = new Turismo("5578FGA","Opel","Atra", "Diesel",false,true,5);
+    vehiculo = new Turismo("5578FGA","Opel","Atra", "Diesel",false,true,5);
     quintocar.altaVehiculo(vehiculo);
-    var vehiculo = new V4x4("2564DDF", "Renault", "Clio", "Diesel",5);
+    vehiculo = new V4x4("2564DDF", "Renault", "Clio", "Diesel",5);
+    quintocar.altaVehiculo(vehiculo); 
+    vehiculo = new Turismo("9596VGA","volkswagen","Golf", "Biocombustible",true,false,3);
+    quintocar.altaVehiculo(vehiculo);
+    vehiculo = new V4x4("1238RTV", "Land Rover", "Defender", "Biocombustible",5);
     quintocar.altaVehiculo(vehiculo); 
    
+   // Compras
+   /*quintocar.comprar("9588FFT","12345678A","25000",new Date("2019-8-15"));
+   quintocar.comprar("4231CAV","23456789B","18000",new Date("2019-9-25"));
+   quintocar.comprar("1238RTV","56743281R","11000",new Date("2019-9-30"));*/
 
+   // Ventas
+   /*quintocar.comprar("9588FFT","12323434W","30000",new Date("2019-9-10"));
+   quintocar.comprar("4231CAV","12121212C","20000",new Date("2019-10-2"));
+   quintocar.comprar("1238RTV","23456789B","15000",new Date("2019-11-16"));*/
 }
