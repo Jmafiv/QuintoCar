@@ -152,13 +152,15 @@ class QuintoCar {
     }
 
     buscarCliente(nif) {
+        let c;
         this.clientes.forEach(compara);
 
         function compara(cliente, index) {
             if (cliente.nif == nif) {
-                return cliente;
+                c = cliente;
             }
         }
+        return c;
     }
 
     buscarCompra(vehiculo) {
@@ -182,31 +184,39 @@ class QuintoCar {
         }
         return v;
     }
-
-    comprar(matricula, nif, importe, fecha) {
-        let mensaje;
-    	let vehiculo = this.vehiculos.forEach(compara);
-        let cliente = this.buscarCliente(nif);
+    buscarVehiculo(matricula){
+        let v;
+        this.vehiculos.forEach(compara);
         function compara(vehiculo, index) {
             if (vehiculo.matricula == matricula) {
-                return vehiculo;
+               v = vehiculo;
             }
         }
+        return v;
+    }
+    comprar(matricula, nif, importe, fecha) {
+        let mensaje="";
+    	var vehiculo = this.buscarVehiculo(matricula);
+        let cliente = this.buscarCliente(nif);
+
         if(vehiculo == undefined)
         {
-            mensaje = "Ese vehículo no está registrado\n";
+            mensaje = "Ese vehículo no está registrado<br>";
         }
-        if(cliente == undefined)
+        else if(cliente == undefined)
         {
-            mensaje += "No se ha encontrado el cliente\n";
+            mensaje += "No se ha encontrado el cliente<br>";
         }
-        if(this.buscarCompra(vehiculo) != undefined)
+        else if(this.buscarCompra(vehiculo) != undefined)
         {
-            mensaje += "Ese vehículo se ha comprado ya\n";
+            mensaje += "Ese vehículo se ha comprado ya<br>";
         }
-        if (this.buscarVenta(vehiculo) != undefined)
+        else if (this.buscarVenta(vehiculo) != undefined)
         {
-            mensaje += "Ese vehículo se ha vendido ya\n";
+            mensaje += "Ese vehículo se ha vendido ya<br>";
+        }
+        else{
+            mensaje = "Se ha comprado correctamente";
         }
 
         let compra = new Compra(cliente,vehiculo,importe,fecha);
@@ -223,6 +233,7 @@ class QuintoCar {
                 return vehiculo;
             }
         }
+
         if(vehiculo == undefined)
         {
             mensaje = "Ese vehículo no está registrado\n";
