@@ -266,7 +266,7 @@ class QuintoCar {
 
     listadoVendidosperiodo(fechaInicio, fechaFin) {
         // Cabecera de la tabla
-        let tabla = "<div class='table-responsive'><table class='table'><thead class='thead-dark'><tr><th scope='col'>Matricula</th><th scope='col'>Marca</th><th scope='col'>Modelo</th><th scope='col'>Combustible</th><th scope='col'>ABS</th><th scope='col'>Descapotable</th><th scope='col'>Nº Puertas</th><th scope='col'>Pendiente Máxima</th><th scope='col'>Fecha Compra</th><th scope='col'>Importe Venta</th><th scope='col'>Importe Compra</th><th scope='col'>Fecha Venta</th><th scope='col'>Beneficio</th></tr></thead><tbody>";
+        let tabla = "<div class='table-responsive'><table class='table'><thead class='thead-dark'><tr><th scope='col'>Matricula</th><th scope='col'>Marca</th><th scope='col'>Modelo</th><th scope='col'>Combustible</th><th scope='col'>ABS</th><th scope='col'>Descapotable</th><th scope='col'>Nº Puertas</th><th scope='col'>Pendiente Máxima</th><th scope='col'>Fecha Compra</th><th scope='col'>Fecha Venta</th><th scope='col'>Importe Compra</th><th scope='col'>Importe Venta</th><th scope='col'>Beneficio</th></tr></thead><tbody>";
         // Ordenación ascendente
         this.ventas.sort(function(venta,otraVenta){
             if (venta.fechaVenta > otraVenta.fechaVenta) {return 1;}
@@ -277,7 +277,7 @@ class QuintoCar {
         this.ventas.forEach( (venta) => {
             let compraCoche = this.buscarCompra(venta.vehiculo); // Busca la compra del coche que se ha vendido
             if(venta.fechaVenta > fechaInicio && venta.fechaVenta < fechaFin){ // Comprueba si se vendió en el periodo dado
-                tabla += this.todosLosDatosVehiculo(venta.vehiculo).substring(0,-5);
+                tabla += this.todosLosDatosVehiculo(venta.vehiculo).substring(0,this.todosLosDatosVehiculo(venta.vehiculo).length-5);
                 tabla+="<td>"+compraCoche.fechaCompra.toLocaleDateString()+"</td><td>"+venta.fechaVenta.toLocaleDateString()+"</td><td>"+compraCoche.importe+"</td><td>"+venta.importe+"</td><td>"+(venta.importe - compraCoche.importe)+"</td></tr>";
            }
         });
@@ -286,18 +286,17 @@ class QuintoCar {
     }
     listadoCompradosperiodo(fechaInicio, fechaFin) {
         // Cabecera de la tabla
-        let tabla = "<div class='table-responsive'><table class='table'><thead class='thead-dark'><tr><th scope='col'>Matricula</th><th scope='col'>Marca</th><th scope='col'>Modelo</th><th scope='col'>Combustible</th><th scope='col'>ABS</th><th scope='col'>Descapotable</th><th scope='col'>Nº Puertas</th><th scope='col'>Pendiente Máxima</th><th scope='col'>Fecha Compra</th><th scope='col'>Importe Compra</th><th scope='col'>Importe Compra</th><th scope='col'>NIF</th><th scope='col'>Nombre</th></tr></thead><tbody>";
+        let tabla = "<div class='table-responsive'><table class='table'><thead class='thead-dark'><tr><th scope='col'>Matricula</th><th scope='col'>Marca</th><th scope='col'>Modelo</th><th scope='col'>Combustible</th><th scope='col'>ABS</th><th scope='col'>Descapotable</th><th scope='col'>Nº Puertas</th><th scope='col'>Pendiente Máxima</th><th scope='col'>Fecha Compra</th><th scope='col'>Importe Compra</th><th scope='col'>NIF</th><th scope='col'>Nombre</th></tr></thead><tbody>";
         // Ordenación descendente 
         this.compras.sort(function(compra,otraCompra){
-            if (compra.fechacompra > otraCompra.fechaVenta) {return -1;}
-            if (compra.fechaVenta < otraCompra.fechaVenta) {return 1;}
+            if (compra.fechacompra < otraCompra.fechaVenta) {return 1;}
+            if (compra.fechaVenta > otraCompra.fechaVenta) {return -1;}
             return 0;
         });
         // Línea de cada compra
         this.compras.forEach( (compra) => {
             if(compra.fechaCompra > fechaInicio && compra.fechaCompra < fechaFin){ // Comprueba si se compró en el periodo dado
-                tabla += this.todosLosDatosVehiculo(compra.vehiculo).substring(0,-5);
-                console.log(compra.vehiculo);
+                tabla += this.todosLosDatosVehiculo(compra.vehiculo).substring(0,this.todosLosDatosVehiculo(compra.vehiculo).length-5);
                 tabla += "<td>"+compra.fechaCompra.toLocaleDateString()+"</td><td>"+compra.importe+"</td><td>"+compra.cliente.nif+"</td><td>"+compra.cliente.nombre+"</td></tr>";
            }
         });
