@@ -74,7 +74,7 @@ function enviar(){ // Según lo que se muestra en pantalla se envia a un método
 		elemento = document.getElementById(opcion).getElementsByTagName('input')[i];
 		if(elemento.value == ""){
 			error = true;
-			mensajeErrorDebajo(elemento,"No puede estar vacío");
+			mensajeErrorDebajo(elemento,"Este campo no puede estar vacío.");
 		}
 	}
 	if(error){
