@@ -215,12 +215,14 @@ class QuintoCar {
         {
             mensaje += "Ese vehículo se ha vendido ya<br>";
         }
-        else{
+        else
+        {
+            let compra = new Compra(cliente,vehiculo,importe,fecha);
+            this.compras.push(compra);
             mensaje = "Se ha comprado correctamente";
         }
 
-        let compra = new Compra(cliente,vehiculo,importe,fecha);
-        this.compras.push(compra);
+        
         return mensaje;
     }
 
@@ -237,9 +239,10 @@ class QuintoCar {
         {
             mensaje += "No se ha encontrado el cliente<br>";
         }
-        else if(this.buscarCompra(vehiculo) != undefined)
+        else if(this.buscarCompra(vehiculo) == undefined)
         {
-            mensaje += "Ese vehículo se ha comprado ya<br>";
+            mensaje += "Ese vehículo no se ha comprado aún<br>";
+
         }
         else if (this.buscarVenta(vehiculo) != undefined)
         {
@@ -247,11 +250,22 @@ class QuintoCar {
         }
         else
         {
-            mensaje = "Se ha vendido correctamente";
+            let compra = this.buscarCompra(vehiculo);
+            if (compra.importe > importe)
+            {
+                mensaje += "El importe debe ser superior al de compra";
+            }
+            else if (compra.fechaCompra > fecha)
+            {
+                mensaje += "La fecha de venta debe ser posterior a la de compra";
+            }
+            else
+            {
+                let venta = new Venta(cliente,vehiculo,importe,fecha);
+                this.ventas.push(venta);
+                mensaje = "Se ha vendido correctamente";
+            }
         }
-
-        let venta = new Venta(cliente,vehiculo,importe,fecha);
-        this.ventas.push(venta);
         return mensaje;
     }
 
