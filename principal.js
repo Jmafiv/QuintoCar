@@ -211,6 +211,6 @@ function datosIniciales() {
    quintocar.comprar("1238RTV","56743281R","11000",new Date("2019-9-30"));
 
    // Ventas
-   /*quintocar.comprar("9588FFT","12323434W","30000",new Date("2019-9-10"));
-   quintocar.comprar("4231CAV","12121212C","20000",new Date("2019-10-2"));*/
+   quintocar.vender("9588FFT","12323434W","30000",new Date("2019-9-10"));
+   quintocar.vender("4231CAV","12121212C","20000",new Date("2019-10-2"));
 }
