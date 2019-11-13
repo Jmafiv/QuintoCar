@@ -101,8 +101,8 @@ class Turismo extends Vehiculo {
         row += "<td>" + this.marca + "</td>";
         row += "<td>" + this.modelo + "</td>";
         row += "<td>" + this.combustible + "</td>";
-        row += "<td>" + this.abs + "</td>";
-        row += "<td>" + this.descapotable + "</td>";
+        row += "<td>" + (this.abs?"Sí":"No") + "</td>";
+        row += "<td>" + (this.descapotable?"Sí":"No") + "</td>";
         row += "<td>" + this.numPuertas + "</td>";
         row += "</tr>";
         return row;
