@@ -186,7 +186,7 @@ class QuintoCar {
     comprar(matricula, nif, importe, fecha) {
         let mensaje;
     	let vehiculo = this.vehiculos.forEach(compara);
-        let cliente = buscarCliente(nif);
+        let cliente = this.buscarCliente(nif);
         function compara(vehiculo, index) {
             if (vehiculo.matricula == matricula) {
                 return vehiculo;
@@ -200,11 +200,11 @@ class QuintoCar {
         {
             mensaje += "No se ha encontrado el cliente\n";
         }
-        if(buscarCompra(vehiculo) != undefined)
+        if(this.buscarCompra(vehiculo) != undefined)
         {
             mensaje += "Ese vehículo se ha comprado ya\n";
         }
-        if (buscarVenta(vehiculo) != undefined)
+        if (this.buscarVenta(vehiculo) != undefined)
         {
             mensaje += "Ese vehículo se ha vendido ya\n";
         }
@@ -217,7 +217,7 @@ class QuintoCar {
     vender(matricula, nif, importe, fecha) {
         let mensaje;
         let vehiculo = this.vehiculos.forEach(compara);
-        let cliente = buscarCliente(nif);
+        let cliente = this.buscarCliente(nif);
         function compara(vehiculo, index) {
             if (vehiculo.matricula == matricula) {
                 return vehiculo;
@@ -231,11 +231,11 @@ class QuintoCar {
         {
             mensaje += "No se ha encontrado el cliente\n";
         }
-        if(buscarCompra(vehiculo) != undefined)
+        if(this.buscarCompra(vehiculo) != undefined)
         {
             mensaje += "Ese vehículo se ha comprado ya\n";
         }
-        if (buscarVenta(vehiculo) != undefined)
+        if (this.buscarVenta(vehiculo) != undefined)
         {
             mensaje += "Ese vehículo se ha vendido ya\n";
         }

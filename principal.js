@@ -90,10 +90,10 @@ function enviar(){
 			case "altaVehiculo":
 				altaVehiculo();
 				break;
-			case "compraVehiculo":
+			case "comprarVehiculo":
 				compraVehiculo();
 				break;
-			case "ventaVehiculo":
+			case "venderVehiculo":
 				ventaVehiculo();
 				break;
 		}
@@ -131,15 +131,14 @@ function compraVehiculo(){
 	let nif = formulario.clienteCompra.value;
 	let matricula = formulario.vehiculoCompra.value;
 	let importe = parseFloat(formulario.importeCompra.value);
-	let fecha = new Date(formulario.fechaCompra.value).toLocaleDateString();
-
+	let fecha = new Date(formulario.fechaCompra.value);
 	mensaje(quintocar.comprar(matricula, nif, importe, fecha));
 }
 function ventaVehiculo(){
 	let nif = formulario.clienteVenta.value;
 	let matricula = formulario.vehiculoVenta.value;
 	let importe = parseFloat(formulario.importeVenta.value);
-	let fecha = new Date(formulario.fechaVenta.value).toLocaleDateString();
+	let fecha = new Date(formulario.fechaVenta.value);
 
 	mensaje(quintocar.vender(matricula, nif, importe, fecha));
 }
