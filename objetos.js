@@ -283,7 +283,9 @@ class QuintoCar {
         let tabla = "<div class='table-responsive'><table class='table'><thead class='thead-dark'><tr><th scope='col'>Matricula</th><th scope='col'>Marca</th><th scope='col'>Modelo</th><th scope='col'>Combustible</th><th scope='col'>ABS</th><th scope='col'>Descapotable</th><th scope='col'>Nº Puertas</th><th scope='col'>Pendiente Máxima</th><th scope='col'>Fecha Compra</th><th scope='col'>Fecha Venta</th><th scope='col'>Importe Compra</th><th scope='col'>Importe Venta</th><th scope='col'>Beneficio</th></tr></thead><tbody>";
         // Ordenación ascendente
         this.ventas.sort((venta,otraVenta) => {
-            return venta.fechaVenta - otraVenta.fechaVenta;
+          if (venta.fechaVenta > otraVenta.fechaVenta) return 1;
+          if (venta.fechaVenta < otraVenta.fechaVenta) return -1;
+          return 0;
         });
         // Línea de cada venta
         this.ventas.forEach( (venta) => {
@@ -301,7 +303,9 @@ class QuintoCar {
         let tabla = "<div class='table-responsive'><table class='table'><thead class='thead-dark'><tr><th scope='col'>Matricula</th><th scope='col'>Marca</th><th scope='col'>Modelo</th><th scope='col'>Combustible</th><th scope='col'>ABS</th><th scope='col'>Descapotable</th><th scope='col'>Nº Puertas</th><th scope='col'>Pendiente Máxima</th><th scope='col'>Fecha Compra</th><th scope='col'>Importe Compra</th><th scope='col'>NIF</th><th scope='col'>Nombre</th></tr></thead><tbody>";
         // Ordenación descendente 
         this.compras.sort((compra,otraCompra) =>{
-            return otraCompra.fechacompra - compra.fechacompra;
+            if (compra.fechaVenta > otraCompra.fechaVenta) return -1;
+          if (compra.fechaVenta < otraCompra.fechaVenta) return 1;
+          return 0;
         });
         // Línea de cada compra
         this.compras.forEach( (compra) => {
