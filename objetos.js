@@ -272,7 +272,9 @@ class QuintoCar {
     listadoALaVenta() {
         let tabla = "<table class='table'><thead class='thead-dark'><tr><th scope='col'>Matricula</th><th scope='col'>Marca</th><th scope='col'>Modelo</th><th scope='col'>Combustible</th><th scope='col'>ABS</th><th scope='col'>Descapotable</th><th scope='col'>Nº Puertas</th><th scope='col'>Pendiente Máxima</th></tr></thead><tbody>";
         this.compras.forEach( (compra) => {
-           tabla += this.todosLosDatosVehiculo(compra.vehiculo);
+           if(this.buscarVenta(compra.vehiculo) == undefined){
+               tabla += this.todosLosDatosVehiculo(compra.vehiculo);
+           }
         });
         tabla += "</tbody></table>";
         return tabla;
