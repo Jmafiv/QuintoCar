@@ -1,8 +1,6 @@
 # QuintoCar
 Práctica grupal para entorno cliente | 2º Desarrollo de aplicaciones Web
 
-* [Trello](https://trello.com/b/fT76CUSb) - Tablero de tareas para la organización del equipo
-
 ## Guía de funciones
 ### principal.js
 Aquí se definen los métodos que trabajan como intermediarios entre la interfaz y las clases.
