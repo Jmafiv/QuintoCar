@@ -64,3 +64,4 @@ Aquí se declaran las clases y sus métodos.
 * **listadoVehiculos()** - Busca todos los vehículos y devuelve una string con la tabla de datos.
 * **listadoClientes()** - Busca todos los clientes y devuelve una string con la tabla de datos.
 
+I.E.S. Hermanos Machado | Entorno Cliente | Adolfo Fuentes, Javier Marín e Irene Viñas | Noviembre 2019
